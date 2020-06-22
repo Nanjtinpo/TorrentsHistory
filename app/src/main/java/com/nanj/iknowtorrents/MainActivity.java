@@ -68,10 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
   // 指定したURLにGET
   public String urlGet(String url) throws IOException {
+    /*
     final Request request = new Request.Builder().url(url).build();
     final OkHttpClient client = new OkHttpClient.Builder().build();
     Response response = client.newCall(request).execute();
     return response.body().string();
+    */
   }
   
   // 戻るキーを押すとドロワーが閉じる
