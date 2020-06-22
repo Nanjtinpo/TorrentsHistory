@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputLayout;
 import java.net.NetworkInterface;
 import java.net.InetAddress;
 import java.util.Collections;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     String myip = getIPAddress(true);
-    textField = findViewById(R.id.searchip);
+    TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
 
     // TopAppBarのメニューアイコンのListener
