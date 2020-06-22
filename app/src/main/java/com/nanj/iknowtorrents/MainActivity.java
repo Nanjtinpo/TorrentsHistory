@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    InetAddress myip = InetAddress.getLocalHost().getHostAddress();
+    String myip = InetAddress.getLocalHost().getHostAddress().toString();
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
