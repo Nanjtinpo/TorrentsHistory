@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -19,8 +20,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
 
-import android.widget.Toast;
-
 public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     // IPを取得してTextFieldにセット
-    progressBar = findViewById(R.id.progress);
+    ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
     progressBar.setVisibility(android.widget.ProgressBar.VISIBLE);
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
