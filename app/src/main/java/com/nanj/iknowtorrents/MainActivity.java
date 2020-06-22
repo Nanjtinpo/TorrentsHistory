@@ -16,6 +16,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
+import javax.security.auth.callback.Callback;
 
 import android.widget.Toast;
 
@@ -71,13 +72,11 @@ public class MainActivity extends AppCompatActivity {
     Request request = new Request.Builder().url(url).build();
     OkHttpClient client = new OkHttpClient();
     client.newCall(request).enqueue(new Callback() {
-      @Override
-      public void onFailure(Request request, IOException e) {
+      private void onFailure(Request request, IOException e) {
         return "";
       }
 
-      @Override
-      public void onResponse(Response response) throws IOException {
+      private void onResponse(Response response) throws IOException {
         return response.body().string();
       }
     });
