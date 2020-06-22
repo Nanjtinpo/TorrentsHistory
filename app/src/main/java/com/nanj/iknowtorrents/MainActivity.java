@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
   public String urlGet(String url) throws IOException {
     Request request = new Request.Builder().url(url).build();
     OkHttpClient client = new OkHttpClient();
-    Response response = client.newCall(request).execute();
+    // Response response = client.newCall(request).execute();
     // return response.body().string();
     return "";
   }
