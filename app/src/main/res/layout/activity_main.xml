@@ -34,7 +34,6 @@
                         android:id="@+id/searchip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:hint="検索するIP"
                         app:endIconMode="clear_text">
                         <com.google.android.material.textfield.TextInputEditText
@@ -45,7 +44,7 @@
                         android:id="@+id/searchstart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+			android:layout_gravity="center"
                         android:text="検索"/>
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.core.widget.NestedScrollView>
