@@ -12,10 +12,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
-import java.net.NetworkInterface;
-import java.net.InetAddress;
-import java.util.Collections;
-import java.util.List;
 
 import android.widget.Toast;
 
@@ -25,7 +21,17 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    String myip = getIPAddress(true);
+    String myip = "";
+    OkHttpClient client = new OkHttpClient();
+    String run(String url) throws IOException {
+      Request request = new Request.Builder()
+          .url("https://api.ipify.org")
+          .build();
+      try (Response response = client.newCall(request).execute()) {
+        myip = response.string();
+      }
+    }
+
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
@@ -70,32 +76,5 @@ public class MainActivity extends AppCompatActivity {
     } else {
       super.onBackPressed();
     }
-  }
-
-  public static String getIPAddress(boolean useIPv4) {
-    try {
-      List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
-      for (NetworkInterface intf : interfaces) {
-        List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
-        for (InetAddress addr : addrs) {
-          if (!addr.isLoopbackAddress()) {
-            String sAddr = addr.getHostAddress();
-            //boolean isIPv4 = InetAddressUtils.isIPv4Address(sAddr);
-            boolean isIPv4 = sAddr.indexOf(':')<0;
-
-            if (useIPv4) {
-              if (isIPv4)
-                return sAddr;
-            } else {
-              if (!isIPv4) {
-                int delim = sAddr.indexOf('%'); // drop ip6 zone suffix
-                return delim<0 ? sAddr.toUpperCase() : sAddr.substring(0, delim).toUpperCase();
-              }
-            }
-          }
-        }
-      }
-    } catch (Exception ignored) { } // for now eat exceptions
-    return "";
   }
 }
