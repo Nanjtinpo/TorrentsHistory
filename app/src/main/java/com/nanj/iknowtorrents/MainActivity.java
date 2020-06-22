@@ -24,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-    String myip = urlGet("https://api.ipify.org");
+    
+    try {
+      String myip = urlGet("https://api.ipify.org");
+    catch (IOException e) {}
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
