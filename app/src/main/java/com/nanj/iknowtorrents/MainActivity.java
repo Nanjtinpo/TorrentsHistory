@@ -29,10 +29,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     
     // IPを取得してTextFieldにセット
-    try {
-      urlGet("https://api.ipify.org");
-    } catch (IOException e) {
-    }
+    urlGet("https://api.ipify.org");
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
@@ -69,27 +66,29 @@ public class MainActivity extends AppCompatActivity {
   }
 
   // 指定したURLにGET
-  void urlGet(String url) throws IOException{
-    Request request = new Request.Builder()
-            .url(url)
-            .build();
-    OkHttpClient client = new OkHttpClient();
-    client.newCall(request)
-            .enqueue(new Callback() {
-      private void onFailure(final Call call, IOException e) {
-        // Error
-        runOnUiThread(new Runnable() {
-          @Override
-          public void run() {
-            // For the example, you can show an error dialog or a toast
-            // on the main UI thread
+  @Override
+  public void urlGet(String geturl) {
+    private final OkHttpClient client = new OkHttpClient();
+    public void run() throws Exception {
+      Request request = new Request.Builder()
+          .url(geturl)
+          .build();
+
+      client.newCall(request).enqueue(new Callback() {
+        @Override 
+        public void onFailure(Call call, IOException e) {
+          e.printStackTrace();
+        }
+
+        @Override 
+        public void onResponse(Call call, Response response) throws IOException {
+          try (ResponseBody responseBody = response.body()) {
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+              myip = responseBody.string();
           }
-        });
-      }
-      private void onResponse(Call call, final Response response) throws IOException {
-        myip = response.body().string();
-      }
-    });
+        }
+      });
+    }
   }
   
   // 戻るキーを押すとドロワーが閉じる
