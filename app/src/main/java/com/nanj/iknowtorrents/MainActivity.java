@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
           .url("https://api.ipify.org")
           .build();
     try (Response response = client.newCall(request).execute()) {
-      myip = response.string();
+      myip = response.toString();
     }
 
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
