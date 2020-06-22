@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
           // Sucsess
         }
-        final String data = response.body().string();
-        mActivity.runOnUiThread(new Runnable() {
+        final String myip = response.body().string();
+        runOnUiThread(new Runnable() {
           @Override
           public void run() {
             TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
@@ -88,9 +88,6 @@ public class MainActivity extends AppCompatActivity {
     });
   }
 
-  // 指定したURLにGET
-  
-  
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
