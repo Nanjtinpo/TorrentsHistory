@@ -26,12 +26,8 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    
-    try {
-      myip = urlGet("https://api.ipify.org");
-    } catch (IOException e) {
-      myip = "グローバルIPを取得できませんでした";
-    }
+
+    urlGet("https://api.ipify.org");
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
@@ -68,16 +64,16 @@ public class MainActivity extends AppCompatActivity {
   }
 
   // 指定したURLにGET
-  public String urlGet(String url) throws IOException {
+  public void urlGet(String url) throws IOException {
     Request request = new Request.Builder().url(url).build();
     OkHttpClient client = new OkHttpClient();
     client.newCall(request).enqueue(new Callback() {
       private void onFailure(Request request, IOException e) {
-        return "";
+        myip = e
       }
 
       private void onResponse(Response response) throws IOException {
-        return response.body().string();
+        myip = response.body().string();
       }
     });
   }
