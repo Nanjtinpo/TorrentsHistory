@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
       @Override
       public void onResponse(Response response) throws IOException {
-        return response.body().string()
+        return response.body().string();
       }
     });
   }
