@@ -23,13 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
     String myip = "";
     OkHttpClient client = new OkHttpClient();
-    String run(String url) throws IOException {
-      Request request = new Request.Builder()
+    Request request = new Request.Builder()
           .url("https://api.ipify.org")
           .build();
-      try (Response response = client.newCall(request).execute()) {
-        myip = response.string();
-      }
+    try (Response response = client.newCall(request).execute()) {
+      myip = response.string();
     }
 
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
