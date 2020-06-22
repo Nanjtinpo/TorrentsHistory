@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     // IPを取得してTextFieldにセット
-    ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
+    final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
     progressBar.setVisibility(android.widget.ProgressBar.VISIBLE);
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
