@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
         .url("https://api.ipify.org")
         .build();
     client.newCall(request).enqueue(new Callback() {
-      //@Override
-     // public void onFailure(Call call, IOException e) {}
+      @Override
+      public void onFailure(Call call, IOException e) {}
       @Override
       public void onResponse(Call call, Response response) throws IOException {
         if(!response.isSuccessful()){
           throw new IOException("Error : " + response);
-        } else {}
+        }
         final String myip = response.body().string();
         runOnUiThread(new Runnable() {
           @Override
