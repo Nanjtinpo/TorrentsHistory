@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     try {
       myip = urlGet("https://api.ipify.org");
     } catch (IOException e) {
-      myip = ""
+      myip = "";
     }
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
