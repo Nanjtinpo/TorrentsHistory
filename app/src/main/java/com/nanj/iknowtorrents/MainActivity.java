@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     // final OkHttpClient client = new OkHttpClient.Builder().build();
     // Response response = client.newCall(request).execute();
     // return response.body().string();
+    return "";
   }
   
   // 戻るキーを押すとドロワーが閉じる
