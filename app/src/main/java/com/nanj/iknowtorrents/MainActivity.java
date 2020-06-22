@@ -22,6 +22,20 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
   String myip;
+  String URL = "https://api.ipify.org";
+  interface Listener {
+    void onSuccess(Event event);
+    void onFailure();
+  }
+  private Listener mListener;
+  private OkHttpClient mOkHttpClient;
+  
+  
+  RequestClient(Context context, Listener listener) {
+    this.mListener = listener;
+    this.mOkHttpClient = new OkHttpClient();
+  }
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -64,16 +78,18 @@ public class MainActivity extends AppCompatActivity {
   }
 
   // 指定したURLにGET
-  public void urlGet(String url) throws IOException {
-    Request request = new Request.Builder().url(url).build();
-    OkHttpClient client = new OkHttpClient();
-    client.newCall(request).enqueue(new Callback() {
-      private void onFailure(Request request, IOException e) {
-        myip = "エラー";
+  private void getOkHttp(final Listener listener) {
+    final okhttp3.Request request = new okhttp3.Request.Builder().url(URL).get().build();
+    mOkHttpClient.newCall(request).enqueue(new Callback() {
+      @Override
+      public void onFailure(Call call, IOException e) {
+        listener.onFailure();
       }
 
-      private void onResponse(Response response) throws IOException {
-        myip = response.body().string();
+      @Override
+      public void onResponse(Call call, okhttp3.Response response) throws IOException {
+        Event event = new Gson().fromJson(response.body().string(), Event.class);
+        listener.onSuccess(event);
       }
     });
   }
