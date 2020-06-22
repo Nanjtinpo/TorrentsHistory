@@ -11,13 +11,18 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    
+
+    String myip = getIPAddress(true);
+    TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
+    textField.setText(myip, TextView.BufferType.NORMAL);
+
     // TopAppBarのメニューアイコンのListener
     MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
     materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -27,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         drawer.openDrawer(GravityCompat.START);
       }
     });
-    
+
     // ナビゲーションドロワーのListener
     NavigationView navigationView = (NavigationView)findViewById(R.id.navigation);
     navigationView.setNavigationItemSelectedListener(
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
       }
     });
   }
-  
+
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
@@ -58,5 +63,32 @@ public class MainActivity extends AppCompatActivity {
     } else {
       super.onBackPressed();
     }
-  } 
+  }
+
+  public static String getIPAddress(boolean useIPv4) {
+    try {
+      List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+      for (NetworkInterface intf : interfaces) {
+        List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
+        for (InetAddress addr : addrs) {
+          if (!addr.isLoopbackAddress()) {
+            String sAddr = addr.getHostAddress();
+            //boolean isIPv4 = InetAddressUtils.isIPv4Address(sAddr);
+            boolean isIPv4 = sAddr.indexOf(':')<0;
+
+            if (useIPv4) {
+              if (isIPv4)
+                return sAddr;
+            } else {
+              if (!isIPv4) {
+                int delim = sAddr.indexOf('%'); // drop ip6 zone suffix
+                return delim<0 ? sAddr.toUpperCase() : sAddr.substring(0, delim).toUpperCase();
+              }
+            }
+          }
+        }
+      }
+    } catch (Exception ignored) { } // for now eat exceptions
+    return "";
+  }
 }
