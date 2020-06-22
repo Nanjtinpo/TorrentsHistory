@@ -70,9 +70,17 @@ public class MainActivity extends AppCompatActivity {
   public String urlGet(String url) throws IOException {
     Request request = new Request.Builder().url(url).build();
     OkHttpClient client = new OkHttpClient();
-    // Response response = client.newCall(request).execute();
-    // return response.body().string();
-    return "";
+    client.newCall(request).enqueue(new Callback() {
+      @Override
+      public void onFailure(Request request, IOException e) {
+        return "";
+      }
+
+      @Override
+      public void onResponse(Response response) throws IOException {
+        return response.body().string()
+      }
+    });
   }
   
   // 戻るキーを押すとドロワーが閉じる
