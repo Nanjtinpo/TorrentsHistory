@@ -22,26 +22,16 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
   String myip;
-  String URL = "https://api.ipify.org";
-  interface Listener {
-    void onSuccess(Event event);
-    void onFailure();
-  }
-  private Listener mListener;
-  private OkHttpClient mOkHttpClient;
-  
-  
-  RequestClient(Context context, Listener listener) {
-    this.mListener = listener;
-    this.mOkHttpClient = new OkHttpClient();
-  }
-  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-    urlGet("https://api.ipify.org");
+    
+    // IPを取得してTextFieldにセット
+    try {
+      urlGet("https://api.ipify.org");
+    } catch (IOException e) {
+    }
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
@@ -78,18 +68,26 @@ public class MainActivity extends AppCompatActivity {
   }
 
   // 指定したURLにGET
-  private void getOkHttp(final Listener listener) {
-    final okhttp3.Request request = new okhttp3.Request.Builder().url(URL).get().build();
-    mOkHttpClient.newCall(request).enqueue(new Callback() {
+  void urlGet(String url) throws IOException{
+    Request request = new Request.Builder()
+            .url(url)
+            .build();
+    client.newCall(request)
+            .enqueue(new Callback() {
       @Override
-      public void onFailure(Call call, IOException e) {
-        listener.onFailure();
+      public void onFailure(final Call call, IOException e) {
+        // Error
+        runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+            // For the example, you can show an error dialog or a toast
+            // on the main UI thread
+          }
+        });
       }
-
       @Override
-      public void onResponse(Call call, okhttp3.Response response) throws IOException {
-        Event event = new Gson().fromJson(response.body().string(), Event.class);
-        listener.onSuccess(event);
+      public void onResponse(Call call, final Response response) throws IOException {
+        myip = response.body().string();
       }
     });
   }
