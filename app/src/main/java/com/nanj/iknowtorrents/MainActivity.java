@@ -13,6 +13,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import okhttp3.Call;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     Request request = new Request.Builder()
             .url(url)
             .build();
+    OkHttpClient client = new OkHttpClient();
     client.newCall(request)
             .enqueue(new Callback() {
       private void onFailure(final Call call, IOException e) {
