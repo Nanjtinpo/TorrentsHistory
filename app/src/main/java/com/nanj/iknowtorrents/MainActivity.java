@@ -24,15 +24,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    String myip = "";
-    OkHttpClient client = new OkHttpClient();
-    Request request = new Request.Builder()
-          .url("https://api.ipify.org")
-          .build();
-    try (Response response = client.newCall(request).execute()) {
-      myip = response.toString();
-    }
-
+    String myip = urlGet("https://api.ipify.org");
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
@@ -68,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
     });
   }
 
+  // 指定したURLにGET
+  public void urlGet(String url) throws IOException {
+    final Request request = new Request.Builder().url(url).build();
+    final OkHttpClient client = new OkHttpClient.Builder().build();
+    Response response = client.newCall(request).execute();
+    return response.body().string();
+  }
+  
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
