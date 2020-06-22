@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
     String myip;
     try {
       myip = InetAddress.getLocalHost().getHostAddress();
-    } catch (UnknownHostException e) {
-      Toast.makeText(this, e, Toast.LENGTH_LONG).show();
-    }
+    } catch (UnknownHostException e) {}
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
