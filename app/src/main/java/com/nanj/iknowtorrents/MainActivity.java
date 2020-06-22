@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     // IPを取得してTextFieldにセット
-    final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
+    ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
     progressBar.setVisibility(android.widget.ProgressBar.VISIBLE);
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
           public void run() {
             TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
             textField.getEditText().setText(myip);
-            progressBar.setVisibility(android.widget.ProgressBar.INVISIBLE);
           }
         });
       }
     });
-
+    progressBar.setVisibility(android.widget.ProgressBar.INVISIBLE);
+    
     // TopAppBarのメニューアイコンのListener
     MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
     materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
