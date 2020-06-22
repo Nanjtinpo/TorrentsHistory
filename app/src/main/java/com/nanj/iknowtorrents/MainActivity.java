@@ -22,7 +22,6 @@ import java.io.IOException;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-  String myip;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -35,16 +34,12 @@ public class MainActivity extends AppCompatActivity {
         .build();
     client.newCall(request).enqueue(new Callback() {
       @Override
-      public void onFailure(Call call, IOException e) {
-        // Error
-      }
+      public void onFailure(Call call, IOException e) {}
       @Override
       public void onResponse(Call call, Response response) throws IOException {
         if(!response.isSuccessful()){
           throw new IOException("Error : " + response);
-        } else {
-          // Sucsess
-        }
+        } else {}
         final String myip = response.body().string();
         runOnUiThread(new Runnable() {
           @Override
