@@ -20,14 +20,17 @@ import java.io.IOException;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+  String myip;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
     try {
-      String myip = urlGet("https://api.ipify.org");
-    } catch (IOException e) {}
+      myip = urlGet("https://api.ipify.org");
+    } catch (IOException e) {
+      myip = ""
+    }
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
