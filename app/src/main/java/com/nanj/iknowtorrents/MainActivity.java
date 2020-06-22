@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
+import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -74,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
             .build();
     client.newCall(request)
             .enqueue(new Callback() {
-      @Override
-      public void onFailure(final Call call, IOException e) {
+      private void onFailure(final Call call, IOException e) {
         // Error
         runOnUiThread(new Runnable() {
           @Override
@@ -85,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
           }
         });
       }
-      @Override
-      public void onResponse(Call call, final Response response) throws IOException {
+      private void onResponse(Call call, final Response response) throws IOException {
         myip = response.body().string();
       }
     });
