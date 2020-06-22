@@ -17,6 +17,8 @@ import java.net.InetAddress;
 import java.util.Collections;
 import java.util.List;
 
+import android.widget.Toast;
+
 public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     String myip = getIPAddress(true);
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
+    Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
 
     // TopAppBarのメニューアイコンのListener
     MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
