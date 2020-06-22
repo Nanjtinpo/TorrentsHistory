@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
           public void run() {
             TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
             textField.getEditText().setText(myip);
-            Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, myip, Toast.LENGTH_LONG).show();
           }
         });
       }
