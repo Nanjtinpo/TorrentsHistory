@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     OkHttpClient client = new OkHttpClient();
     client.newCall(request).enqueue(new Callback() {
       private void onFailure(Request request, IOException e) {
-        myip = e;
+        myip = "エラー";
       }
 
       private void onResponse(Response response) throws IOException {
