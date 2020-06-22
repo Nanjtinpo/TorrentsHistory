@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     
     try {
       String myip = urlGet("https://api.ipify.org");
-    catch (IOException e) {}
+    } catch (IOException e) {}
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
