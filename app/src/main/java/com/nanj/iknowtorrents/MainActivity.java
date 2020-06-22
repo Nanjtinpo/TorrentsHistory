@@ -12,6 +12,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
+import java.net.NetworkInterface;
+import java.net.InetAddress;
+import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
   @Override
