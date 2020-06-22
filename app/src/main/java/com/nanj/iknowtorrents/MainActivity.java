@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import java.io.IOException;
 
 import android.widget.Toast;
 
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   // 指定したURLにGET
-  public void urlGet(String url) throws IOException {
+  public String urlGet(String url) throws IOException {
     final Request request = new Request.Builder().url(url).build();
     final OkHttpClient client = new OkHttpClient.Builder().build();
     Response response = client.newCall(request).execute();
