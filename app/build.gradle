@@ -1,0 +1,18 @@
+apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion 29
+  buildToolsVersion '29.0.3'
+
+  defaultConfig {
+    applicationId 'com.nanj.iknowtorrents'
+    minSdkVersion 17
+    targetSdkVersion 29
+    versionCode 1
+    versionName '1.0.0-beta'
+  }
+}
+
+dependencies {
+    implementation 'com.google.android.material:material:1.3.0-alpha01'
+}
