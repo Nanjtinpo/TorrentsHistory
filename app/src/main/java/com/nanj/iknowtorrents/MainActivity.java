@@ -26,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    
+
     // IPを取得してTextFieldにセット
+    progressBar = findViewById(R.id.progress);
+    progressBar.setVisibility(android.widget.ProgressBar.VISIBLE);
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
         .url("https://api.ipify.org")
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
           public void run() {
             TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
             textField.getEditText().setText(myip);
+            progressBar.setVisibility(android.widget.ProgressBar.INVISIBLE);
           }
         });
       }
