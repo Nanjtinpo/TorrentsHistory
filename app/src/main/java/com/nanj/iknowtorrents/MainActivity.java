@@ -14,6 +14,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import java.net.InetAddress;
 
+import java.net.UnknownHostException;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    String myip;
     try {
-      String myip = InetAddress.getLocalHost().getHostAddress();
+      myip = InetAddress.getLocalHost().getHostAddress();
     } catch (UnknownHostException e) {
       Toast.makeText(this, e, Toast.LENGTH_LONG).show();
     }
