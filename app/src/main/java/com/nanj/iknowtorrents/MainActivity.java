@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    String myip;
+    String myip = "error";
     try {
       myip = InetAddress.getLocalHost().getHostAddress();
     } catch (UnknownHostException e) {}
