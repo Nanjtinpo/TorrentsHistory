@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     String myip = getIPAddress(true);
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
-    textField.setText(myip, TextView.BufferType.NORMAL);
+    textField.getEditText().setText(myip);
 
     // TopAppBarのメニューアイコンのListener
     MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
