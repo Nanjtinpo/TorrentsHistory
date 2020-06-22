@@ -1,7 +1,6 @@
 package com.nanj.iknowtorrents;
 
 import android.content.Intent;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -13,7 +12,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
-import java.net.InetAddress;
 
 import android.widget.Toast;
 
@@ -23,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
-    String myip = getHostAddress(wm.getConnectionInfo().getIpAddress());
+    String myip = InetAddress.getLocalHost().getHostAddress();
     TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
     textField.getEditText().setText(myip);
     Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
