@@ -29,10 +29,33 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     
     // IPを取得してTextFieldにセット
-    urlGet("https://api.ipify.org");
-    TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
-    textField.getEditText().setText(myip);
-    Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
+    OkHttpClient client = new OkHttpClient();
+    Request request = new Request.Builder()
+        .url("https://api.ipify.org")
+        .build();
+    client.newCall(request).enqueue(new Callback() {
+      @Override
+      public void onFailure(Call call, IOException e) {
+        // Error
+      }
+      @Override
+      public void onResponse(Call call, Response response) throws IOException {
+        if(!response.isSuccessful()){
+          throw new IOException("Error : " + response);
+        } else {
+          // Sucsess
+        }
+        final String data = response.body().string();
+        mActivity.runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+            TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
+            textField.getEditText().setText(myip);
+            Toast.makeText(this, myip, Toast.LENGTH_LONG).show();
+          }
+        });
+      }
+    });
 
     // TopAppBarのメニューアイコンのListener
     MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
@@ -66,30 +89,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   // 指定したURLにGET
-  @Override
-  public void urlGet(String geturl) {
-    private final OkHttpClient client = new OkHttpClient();
-    public void run() throws Exception {
-      Request request = new Request.Builder()
-          .url(geturl)
-          .build();
-
-      client.newCall(request).enqueue(new Callback() {
-        @Override 
-        public void onFailure(Call call, IOException e) {
-          e.printStackTrace();
-        }
-
-        @Override 
-        public void onResponse(Call call, Response response) throws IOException {
-          try (ResponseBody responseBody = response.body()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-              myip = responseBody.string();
-          }
-        }
-      });
-    }
-  }
+  
   
   // 戻るキーを押すとドロワーが閉じる
   @Override
