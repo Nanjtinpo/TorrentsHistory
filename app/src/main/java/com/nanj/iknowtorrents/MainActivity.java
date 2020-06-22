@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         .url("https://api.ipify.org")
         .build();
     client.newCall(request).enqueue(new Callback() {
-      @Override
-      public void onFailure(Call call, IOException e) {}
+      //@Override
+     // public void onFailure(Call call, IOException e) {}
       @Override
       public void onResponse(Call call, Response response) throws IOException {
         if(!response.isSuccessful()){
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
           public void run() {
             TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
             textField.getEditText().setText(myip);
-            Toast.makeText(MainActivity.this, myip, Toast.LENGTH_LONG).show();
           }
         });
       }
