@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -27,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     // IPを取得してTextFieldにセット
-    // ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
-    // progressBar.setVisibility(android.widget.ProgressBar.VISIBLE);
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
+    progressBar.setVisibility(android.widget.ProgressBar.VISIBLE);
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
         .url("https://api.ipify.org")
@@ -51,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         });
       }
     });
-    // progressBar.setVisibility(android.widget.ProgressBar.INVISIBLE);
+    progressBar.setVisibility(android.widget.ProgressBar.GONE);
+    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     
     // TopAppBarのメニューアイコンのListener
     MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
