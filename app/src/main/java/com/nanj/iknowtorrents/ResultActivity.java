@@ -13,7 +13,7 @@ public class ResultActivity extends AppCompatActivity {
     setContentView(R.layout.activity_result);
 
     Intent intent = getIntent();
-    String searchip = intent.getStringExtra("MainActivity.com.nanj.iknowtorrents.DATA", 0);
+    String searchip = intent.getStringExtra("searchip", 0);
     Toast.makeText(this, searchip, Toast.LENGTH_LONG).show();
   }
 }
