@@ -67,7 +67,29 @@ public class MainActivity extends AppCompatActivity {
     Button searchmyipbutton = findViewById(R.id.searchmyip);
     searchmyipbutton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        // Todo
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+            .url("https://api.ipify.org")
+            .build();
+        client.newCall(request).enqueue(new Callback() {
+          @Override
+          public void onFailure(Call call, IOException e) {}
+          @Override
+          public void onResponse(Call call, Response response) throws IOException {
+            if(!response.isSuccessful()){
+              throw new IOException("Error : " + response);
+            }
+            final String myip = response.body().string();
+            runOnUiThread(new Runnable() {
+              @Override
+              public void run() {
+                Intent intent = new Intent(getApplication(), ResultActivity.class);
+                intent.putExtra("searchip", myip);
+                startActivity(intent);
+              }
+            });
+          }
+        });
       }
     });
 
