@@ -12,8 +12,10 @@ public class ResultActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_result);
 
+    /*
     Intent intent = getIntent();
     String searchip = intent.getStringExtra("searchip");
-    //Toast.makeText(this, searchip, Toast.LENGTH_LONG).show();
+    Toast.makeText(this, searchip, Toast.LENGTH_LONG).show();
+    */
   }
 }
