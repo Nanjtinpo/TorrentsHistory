@@ -46,6 +46,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="検索"/>
+                    <Button
+                        android:id="@+id/searchmyip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="自分のIPを検索"/>
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.core.widget.NestedScrollView>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
