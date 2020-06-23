@@ -40,9 +40,12 @@ public class ResultActivity extends AppCompatActivity {
           @Override
           public void run() {
             Document doc = Jsoup.parse(html);
-            Elements tbody = doc.select("tbody");
-            TextView textView = (TextView)findViewById(R.id.resulttext);
-            textView.setText(tbody.toString());
+            Element architectsHeadline = doc.select("tbody").first();
+            Element architectsList = architectsHeadline.parent().nextElementSibling();
+            for(Element element : architectsList.select("tr > td")){
+              TextView textView = (TextView)findViewById(R.id.resulttext);
+              textView.setText(element.text());
+            }
           }
         });
       }
