@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.widget.Toast;
-
 public class ResultActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +12,8 @@ public class ResultActivity extends AppCompatActivity {
 
     Intent intent = getIntent();
     String searchip = intent.getStringExtra("searchip");
-    Toast.makeText(this, searchip, Toast.LENGTH_LONG).show();
+    
+    TextView textView = (TextView)findViewById(R.id.resulttext);
+    textView.setText(searchip);
   }
 }
