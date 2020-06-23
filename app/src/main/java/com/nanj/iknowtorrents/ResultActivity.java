@@ -43,7 +43,7 @@ public class ResultActivity extends AppCompatActivity {
             Element architectsHeadline = doc.select("tbody").first();
             Element architectsList = architectsHeadline.parent().nextElementSibling();
             for(Element element : architectsList.select("tr > td")){
-              String parsehtml = parsehtml + element.text()
+              String parsehtml = parsehtml + "\n" + element.text();
             }
             TextView textView = (TextView)findViewById(R.id.resulttext);
             textView.setText(parsehtml);
