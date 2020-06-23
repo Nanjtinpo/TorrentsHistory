@@ -59,11 +59,9 @@ public class MainActivity extends AppCompatActivity {
       public void onClick(View view) {
         TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
         String searchip = textField.getEditText().getText().toString();
-        /*
         Intent intent = new Intent(getApplication(), ResultActivity.class);
         intent.putExtra("searchip", searchip);
-        startActivity(intent);
-        */
+        // startActivity(intent);
       }
     });
     Button searchmyipbutton = findViewById(R.id.searchmyip);
