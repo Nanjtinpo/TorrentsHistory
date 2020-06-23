@@ -14,6 +14,6 @@ public class ResultActivity extends AppCompatActivity {
 
     Intent intent = getIntent();
     String searchip = intent.getStringExtra("searchip");
-    Toast.makeText(this, searchip, Toast.LENGTH_LONG).show();
+    //Toast.makeText(this, searchip, Toast.LENGTH_LONG).show();
   }
 }
