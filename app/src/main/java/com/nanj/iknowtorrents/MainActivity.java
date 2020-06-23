@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     // IPを取得してTextFieldにセット
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
-    progressBar.setVisibility(android.widget.ProgressBar.VISIBLE);
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
         .url("https://api.ipify.org")
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         });
       }
     });
-    progressBar.setVisibility(android.widget.ProgressBar.GONE);
+    progressBar.setVisibility(View.GONE);
     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     
     // TopAppBarのメニューアイコンのListener
