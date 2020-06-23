@@ -25,7 +25,7 @@ public class ResultActivity extends AppCompatActivity {
     
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
-        .url(searchip)
+        .url("https://iknowwhatyoudownload.com/en/peer/?ip=" + searchip)
         .build();
     client.newCall(request).enqueue(new Callback() {
       @Override
