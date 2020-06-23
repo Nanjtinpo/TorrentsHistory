@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
               @Override
               public void run() {
-                TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
-                textField.getEditText().setText("");
                 Intent intent = new Intent(getApplication(), ResultActivity.class);
                 intent.putExtra("searchip", myip);
                 startActivity(intent);
