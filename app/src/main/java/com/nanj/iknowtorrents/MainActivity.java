@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
     */
     
     // ボタンのListener
-    MaterialButton searchstartbutton = (MaterialButton)findViewById(R.id.searchstart);
+    MaterialButton searchstartbutton = findViewById(R.id.searchstart);
     searchstartbutton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         // Todo
       }
     });
-    MaterialButton searchmyipbutton = (MaterialButton)findViewById(R.id.searchmyip);
+    MaterialButton searchmyipbutton = findViewById(R.id.searchmyip);
     searchmyipbutton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         // Todo
