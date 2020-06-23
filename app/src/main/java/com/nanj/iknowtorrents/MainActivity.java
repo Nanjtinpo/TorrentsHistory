@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
         String searchip = textField.getEditText().getText().toString();
         Intent intent = new Intent(getApplication(), ResultActivity.class);
-        intent.putExtra("com.nanj.iknowtorrents.DATA", searchip);
+        intent.putExtra("searchip", searchip);
         startActivity(intent);
       }
     });
