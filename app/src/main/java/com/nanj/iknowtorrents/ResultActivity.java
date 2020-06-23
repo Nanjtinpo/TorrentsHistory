@@ -43,9 +43,10 @@ public class ResultActivity extends AppCompatActivity {
             Element architectsHeadline = doc.select("tbody").first();
             Element architectsList = architectsHeadline.parent().nextElementSibling();
             for(Element element : architectsList.select("tr > td")){
-              TextView textView = (TextView)findViewById(R.id.resulttext);
-              textView.setText(element.text());
+              String parsehtml = parsehtml + element.text()
             }
+            TextView textView = (TextView)findViewById(R.id.resulttext);
+            textView.setText(parsehtml);
           }
         });
       }
