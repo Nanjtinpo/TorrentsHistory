@@ -55,7 +55,7 @@
                         style="?android:attr/progressBarStyleLarge"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#B0000000"
+                        android:background="#80000000"
                         android:visibility="gone"/>
                 </FrameLayout>
             </androidx.core.widget.NestedScrollView>
