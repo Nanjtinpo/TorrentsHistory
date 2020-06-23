@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import okhttp3.Call;
@@ -25,7 +26,11 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
+    
+    
     // IPを取得してTextFieldにセット
+    // 自IP調べるButton実装したため保留
+    /*
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
         .url("https://api.ipify.org")
@@ -48,7 +53,22 @@ public class MainActivity extends AppCompatActivity {
         });
       }
     });
-
+    */
+    
+    // ボタンのListener
+    MaterialButton button1 = (MaterialButton)findViewById(R.id.searchstart);
+    button1.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View view) {
+        // Todo
+      }
+    });
+    MaterialButton button1 = (MaterialButton)findViewById(R.id.searchmyip);
+    button1.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View view) {
+        // Todo
+      }
+    });
+    
     // TopAppBarのメニューアイコンのListener
     MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
     materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
