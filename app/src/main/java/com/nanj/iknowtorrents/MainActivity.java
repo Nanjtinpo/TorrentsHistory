@@ -25,9 +25,7 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    
-    
-    
+
     // IPを取得してTextFieldにセット
     // 自IP調べるButton実装したため保留
     /*
@@ -54,12 +52,16 @@ public class MainActivity extends AppCompatActivity {
       }
     });
     */
-    
+
     // ボタンのListener
     Button searchstartbutton = findViewById(R.id.searchstart);
     searchstartbutton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        // Todo
+        TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
+        String searchip = textField.getEditText().getText().toString();
+        Intent intent = new Intent(getApplication(), ResultActivity.class);
+        intent.putExtra("com.nanj.iknowtorrents.DATA", searchip);
+        startActivity(intent);
       }
     });
     Button searchmyipbutton = findViewById(R.id.searchmyip);
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         // Todo
       }
     });
-    
+
     // TopAppBarのメニューアイコンのListener
     MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
     materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
