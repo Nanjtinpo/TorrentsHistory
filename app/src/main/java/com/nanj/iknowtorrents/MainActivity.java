@@ -6,11 +6,11 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import okhttp3.Call;
@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
     */
     
     // ボタンのListener
-    MaterialButton searchstartbutton = findViewById(R.id.searchstart);
+    Button searchstartbutton = findViewById(R.id.searchstart);
     searchstartbutton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         // Todo
       }
     });
-    MaterialButton searchmyipbutton = findViewById(R.id.searchmyip);
+    Button searchmyipbutton = findViewById(R.id.searchmyip);
     searchmyipbutton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         // Todo
