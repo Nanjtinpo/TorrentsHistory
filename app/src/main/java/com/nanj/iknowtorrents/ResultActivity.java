@@ -16,7 +16,6 @@ public class ResultActivity extends AppCompatActivity {
     new FullScreenDialogFragment.Builder(this)
                     .setTitle(R.string.app_name)
                     .setOnDiscardListener(onDiscardListener)
-                    .setContent(ContentFragment.class, argumentsBundle)
                     .build();
     
     Intent intent = getIntent();
