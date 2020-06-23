@@ -26,33 +26,6 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    // IPを取得してTextFieldにセット
-    // 自IP調べるButton実装したため保留
-    /*
-    OkHttpClient client = new OkHttpClient();
-    Request request = new Request.Builder()
-        .url("https://api.ipify.org")
-        .build();
-    client.newCall(request).enqueue(new Callback() {
-      @Override
-      public void onFailure(Call call, IOException e) {}
-      @Override
-      public void onResponse(Call call, Response response) throws IOException {
-        if(!response.isSuccessful()){
-          throw new IOException("Error : " + response);
-        }
-        final String myip = response.body().string();
-        runOnUiThread(new Runnable() {
-          @Override
-          public void run() {
-            TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
-            textField.getEditText().setText(myip);
-          }
-        });
-      }
-    });
-    */
-
     // ボタンのListener
     Button searchstartbutton = findViewById(R.id.searchstart);
     searchstartbutton.setOnClickListener(new View.OnClickListener() {
