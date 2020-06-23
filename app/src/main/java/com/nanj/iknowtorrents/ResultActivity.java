@@ -9,6 +9,9 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class ResultActivity extends AppCompatActivity {
@@ -36,8 +39,10 @@ public class ResultActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
           @Override
           public void run() {
+            Document doc = Jsoup.parse(html);
+            Elements tbody = doc.select("tbody");
             TextView textView = (TextView)findViewById(R.id.resulttext);
-            textView.setText(html);
+            textView.setText(tbody);
           }
         });
       }
