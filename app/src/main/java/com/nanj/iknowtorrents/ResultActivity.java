@@ -7,7 +7,7 @@ import com.franmontiel.fullscreendialog.FullScreenDialogFragment;
 
 import android.widget.Toast;
 
-public class ResultActivity extends AppCompatActivity implements FullScreenDialogFragment {
+public class ResultActivity extends AppCompatActivity implements FullScreenDialogFragment.OnDiscardListener {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
