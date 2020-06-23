@@ -35,9 +35,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="検索するIP"
-                        app:endIconMode="clear_text"
-			android:inputType="text"
-                        android:imeOptions="actionDone">
+                        app:endIconMode="clear_text">
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
