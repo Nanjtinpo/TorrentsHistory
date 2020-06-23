@@ -39,11 +39,12 @@ public class ResultActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
           @Override
           public void run() {
+            String parsehtml = "";
             Document doc = Jsoup.parse(html);
             Element architectsHeadline = doc.select("tbody").first();
             Element architectsList = architectsHeadline.parent().nextElementSibling();
             for(Element element : architectsList.select("tr > td")){
-              String parsehtml = parsehtml + "\n" + element.text();
+              parsehtml = parsehtml + "\n" + element.text();
             }
             TextView textView = (TextView)findViewById(R.id.resulttext);
             textView.setText(parsehtml);
