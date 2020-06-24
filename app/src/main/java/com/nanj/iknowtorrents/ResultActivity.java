@@ -34,7 +34,7 @@ public class ResultActivity extends AppCompatActivity {
     if (Intent.ACTION_SEND.equals(intent.getAction()) && intent.getType() != null) {
       String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
       if (sharedText != null) {
-        Pattern p = Pattern.compile("\d+");
+        Pattern p = Pattern.compile("+");
         Matcher m = p.matcher(sharedText);
         if (m.find()){
           temp = m.group();
