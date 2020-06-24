@@ -41,7 +41,7 @@ public class ResultActivity extends AppCompatActivity {
           public void run() {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody");
-            String result = "";
+            final String result = "";
             if (tbody.text().isEmpty()) {
               result = searchip + " はTorrentを使用していません";
             } else {
