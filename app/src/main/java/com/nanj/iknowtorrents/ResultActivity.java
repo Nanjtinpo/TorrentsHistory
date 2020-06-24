@@ -74,6 +74,8 @@ public class ResultActivity extends AppCompatActivity {
         drawer.closeDrawer(Gravity.LEFT);
         switch (item.getItemId()) {
           case R.id.menuhome:
+            startActivity(new Intent(getApplication(), MainActivity.class));
+            finish();
             return true;
           case R.id.menuabout:
             startActivity(new Intent(getApplication(), AboutActivity.class));
