@@ -21,7 +21,7 @@ public class ResultActivity extends AppCompatActivity {
     setContentView(R.layout.activity_result);
 
     Intent intent = getIntent();
-    String searchip = intent.getStringExtra("searchip");
+    final String searchip = intent.getStringExtra("searchip");
     
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
