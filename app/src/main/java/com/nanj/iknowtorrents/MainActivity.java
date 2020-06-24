@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
       public void onClick(View view) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-            .url("http://checkip.amazonaws.com")
+            .url("https://api.ipify.org")
             .build();
         client.newCall(request).enqueue(new Callback() {
           @Override
