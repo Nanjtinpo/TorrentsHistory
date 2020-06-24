@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -47,7 +48,8 @@ public class ResultActivity extends AppCompatActivity {
       temp = intent.getStringExtra("searchip");
     }
     if (temp.isEmpty()) {
-    temp = "IPアドレスが見つかりませんでした";
+      Toast.makeText(this, "IPアドレスが見つかりませんでした", Toast.LENGTH_LONG).show();
+      finish();
     }
     final String searchip = temp;
     
