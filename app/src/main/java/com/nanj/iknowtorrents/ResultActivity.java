@@ -19,10 +19,12 @@ public class ResultActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_result);
-
+    
+    // intentで送られたデータを受け取る
     Intent intent = getIntent();
     final String searchip = intent.getStringExtra("searchip");
     
+    // ipを検索する
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
         .url("https://iknowwhatyoudownload.com/en/peer/?ip=" + searchip)
@@ -51,5 +53,46 @@ public class ResultActivity extends AppCompatActivity {
         });
       }
     });
+    
+    // TopAppBarのメニューアイコンのListener
+    MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
+    materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer);
+        drawer.openDrawer(GravityCompat.START);
+      }
+    });
+
+    // ナビゲーションドロワーのListener
+    NavigationView navigationView = (NavigationView)findViewById(R.id.navigation);
+    navigationView.setNavigationItemSelectedListener(
+    new NavigationView.OnNavigationItemSelectedListener() {
+      @Override
+      public boolean onNavigationItemSelected(MenuItem item) {
+        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer);
+        drawer.closeDrawer(Gravity.LEFT);
+        switch (item.getItemId()) {
+          case R.id.menuhome:
+            return true;
+          case R.id.menuabout:
+            startActivity(new Intent(getApplication(), AboutActivity.class));
+            finish();
+            return true;
+        }
+        return false;
+      }
+    });
+  }
+  
+  // 戻るキーを押すとドロワーが閉じる
+  @Override
+  public void onBackPressed() {
+    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+    if (drawer.isDrawerOpen(GravityCompat.START)) {
+      drawer.closeDrawer(Gravity.LEFT);
+    } else {
+      super.onBackPressed();
+    }
   }
 }
