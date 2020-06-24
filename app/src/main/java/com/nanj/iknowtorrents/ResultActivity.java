@@ -46,6 +46,9 @@ public class ResultActivity extends AppCompatActivity {
     } else {
       temp = intent.getStringExtra("searchip");
     }
+    if (temp.isEmpty()) {
+    temp = "IPアドレスが見つかりませんでした";
+    }
     final String searchip = temp;
     
     // IPを検索する
