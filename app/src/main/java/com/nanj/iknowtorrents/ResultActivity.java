@@ -29,8 +29,11 @@ public class ResultActivity extends AppCompatActivity {
     setContentView(R.layout.activity_result);
     
     // intentで送られたデータを受け取る
+    Intent intent = getIntent();
+    String action = intent.getAction();
+    String type = intent.getType();
     public static String searchip;
-    if (Intent.ACTION_SEND.equals(getIntent().getType()) && getIntent().getAction() != null) {
+    if (Intent.ACTION_SEND.equals(action) && type != null) {
       
     } else {
       Intent intent = getIntent();
