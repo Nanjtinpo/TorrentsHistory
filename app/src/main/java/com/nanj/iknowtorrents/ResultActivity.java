@@ -48,7 +48,7 @@ public class ResultActivity extends AppCompatActivity {
               result = searchip + " はTorrentを使用していません";
             }
             TextView textView = (TextView)findViewById(R.id.resulttext);
-            textView.setText();
+            textView.setText(result);
           }
         });
       }
