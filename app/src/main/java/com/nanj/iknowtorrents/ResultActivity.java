@@ -36,7 +36,8 @@ public class ResultActivity extends AppCompatActivity {
     if (Intent.ACTION_SEND.equals(intent.getAction()) && intent.getType() != null) {
       String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
       if (sharedText != null) {
-        Pattern p = Pattern.compile("(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])");
+        String ipregexp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
+        Pattern p = Pattern.compile(ipregexp);
         Matcher m = p.matcher(sharedText);
         if (m.find()){
           temp = m.group();
