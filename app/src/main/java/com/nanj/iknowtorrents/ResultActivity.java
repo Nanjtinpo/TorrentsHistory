@@ -34,7 +34,10 @@ public class ResultActivity extends AppCompatActivity {
     String type = intent.getType();
     String temp = "";
     if (Intent.ACTION_SEND.equals(action) && type != null) {
-      
+      String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+      if (sharedText != null) {
+        temp = sharedText;
+      }
     } else {
       temp = intent.getStringExtra("searchip");
     }
