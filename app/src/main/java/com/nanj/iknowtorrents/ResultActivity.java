@@ -41,14 +41,12 @@ public class ResultActivity extends AppCompatActivity {
           public void run() {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody");
-            final String result = "";
+            final TextView textView = (TextView)findViewById(R.id.resulttext);
             if (tbody.text().isEmpty()) {
-              result = searchip + " はTorrentを使用していません";
+              textView.setText(searchip + " はTorrentを使用していません");
             } else {
-              result = searchip + " のTorrent使用履歴/n" + tbody.text();
+              textView.setText(searchip + " のTorrent使用履歴/n" + tbody.text());
             }
-            TextView textView = (TextView)findViewById(R.id.resulttext);
-            textView.setText(result);
           }
         });
       }
