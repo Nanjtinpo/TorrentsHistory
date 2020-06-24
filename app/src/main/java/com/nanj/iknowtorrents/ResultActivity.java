@@ -34,7 +34,11 @@ public class ResultActivity extends AppCompatActivity {
     if (Intent.ACTION_SEND.equals(intent.getAction()) && intent.getType() != null) {
       String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
       if (sharedText != null) {
-        temp = sharedText;
+        Pattern p = Pattern.compile("\d+");
+        Matcher m = p.matcher(sharedText);
+        if (m.find()){
+          temp = m.group();
+        }
       }
     } else {
       temp = intent.getStringExtra("searchip");
