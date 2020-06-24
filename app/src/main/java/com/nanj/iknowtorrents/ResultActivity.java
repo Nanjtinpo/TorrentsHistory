@@ -36,7 +36,6 @@ public class ResultActivity extends AppCompatActivity {
     if (Intent.ACTION_SEND.equals(action) && type != null) {
       
     } else {
-      Intent intent = getIntent();
       searchip = intent.getStringExtra("searchip");
     }
     
