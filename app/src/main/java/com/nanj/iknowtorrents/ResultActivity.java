@@ -42,7 +42,7 @@ public class ResultActivity extends AppCompatActivity {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody");
             TextView textView = (TextView)findViewById(R.id.resulttext);
-            textView.setText(tbody.toString());
+            textView.setText(tbody.text());
           }
         });
       }
