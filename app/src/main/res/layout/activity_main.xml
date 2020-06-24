@@ -40,6 +40,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                     </com.google.android.material.textfield.TextInputLayout>
+                    <RadioGroup
+                        android:id="@+id/radio_group"
+                        android:checkedButton="@+id/selectip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/selectip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="IP"/>
+                        <RadioButton
+                            android:id="@+id/selecthost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ホスト名"/>
+                    </RadioGroup>
                     <Button
                         android:id="@+id/searchstart"
                         android:layout_width="wrap_content"
