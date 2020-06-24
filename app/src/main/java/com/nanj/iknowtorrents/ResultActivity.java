@@ -43,9 +43,9 @@ public class ResultActivity extends AppCompatActivity {
             Elements tbody = doc.select("tbody");
             String result = "";
             if (tbody.text().isEmpty()) {
-              result = tbody.text()
+              result = searchip + " のTorrent使用履歴/n" + tbody.text();
             } else {
-              result = searchip + " はTorrentを使用していません"
+              result = searchip + " はTorrentを使用していません";
             }
             TextView textView = (TextView)findViewById(R.id.resulttext);
             textView.setText();
