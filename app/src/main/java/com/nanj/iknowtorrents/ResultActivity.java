@@ -29,10 +29,14 @@ public class ResultActivity extends AppCompatActivity {
     setContentView(R.layout.activity_result);
     
     // intentで送られたデータを受け取る
-    Intent intent = getIntent();
-    final String searchip = intent.getStringExtra("searchip");
+    if (Intent.ACTION_SEND.equals(getIntent().getType()) && getIntent().getAction() != null) {
+      // 共有から送られた
+    } else {
+      Intent intent = getIntent();
+       String searchip = intent.getStringExtra("searchip");
+    }
     
-    // ipを検索する
+    // IPを検索する
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
         .url("https://iknowwhatyoudownload.com/en/peer/?ip=" + searchip)
@@ -51,11 +55,12 @@ public class ResultActivity extends AppCompatActivity {
           public void run() {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody");
+            final String result = tbody.text();
             final TextView textView = (TextView)findViewById(R.id.resulttext);
-            if (tbody.text().isEmpty()) {
+            if (result.isEmpty()) {
               textView.setText(searchip + " はTorrentを使用していません");
             } else {
-              textView.setText(searchip + " のTorrent使用履歴\n\n" + tbody.text());
+              textView.setText(searchip + " のTorrent使用履歴\n\n" + result);
             }
           }
         });
