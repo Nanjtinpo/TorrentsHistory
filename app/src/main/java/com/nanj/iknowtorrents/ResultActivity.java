@@ -29,11 +29,12 @@ public class ResultActivity extends AppCompatActivity {
     setContentView(R.layout.activity_result);
     
     // intentで送られたデータを受け取る
+    public static String searchip;
     if (Intent.ACTION_SEND.equals(getIntent().getType()) && getIntent().getAction() != null) {
-      // 共有から送られた
+      
     } else {
       Intent intent = getIntent();
-       String searchip = intent.getStringExtra("searchip");
+      searchip = intent.getStringExtra("searchip");
     }
     
     // IPを検索する
