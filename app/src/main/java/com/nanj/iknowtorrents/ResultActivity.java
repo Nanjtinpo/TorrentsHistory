@@ -30,10 +30,8 @@ public class ResultActivity extends AppCompatActivity {
     
     // intentで送られたデータを受け取る
     Intent intent = getIntent();
-    String action = intent.getAction();
-    String type = intent.getType();
     String temp = "";
-    if (Intent.ACTION_SEND.equals(action) && type != null) {
+    if (Intent.ACTION_SEND.equals(intent.getAction()) && intent.getType() != null) {
       String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
       if (sharedText != null) {
         temp = sharedText;
