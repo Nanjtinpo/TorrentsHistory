@@ -45,7 +45,7 @@ public class ResultActivity extends AppCompatActivity {
             if (tbody.text().isEmpty()) {
               textView.setText(searchip + " はTorrentを使用していません");
             } else {
-              textView.setText(searchip + " のTorrent使用履歴/n" + tbody.text());
+              textView.setText(searchip + " のTorrent使用履歴\n" + tbody.text());
             }
           }
         });
