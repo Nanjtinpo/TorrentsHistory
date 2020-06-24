@@ -32,7 +32,7 @@ public class ResultActivity extends AppCompatActivity {
     Intent intent = getIntent();
     String action = intent.getAction();
     String type = intent.getType();
-    static String searchip = "";
+    String searchip = "";
     if (Intent.ACTION_SEND.equals(action) && type != null) {
       
     } else {
