@@ -32,12 +32,13 @@ public class ResultActivity extends AppCompatActivity {
     Intent intent = getIntent();
     String action = intent.getAction();
     String type = intent.getType();
-    final String searchip;
+    String temp = "";
     if (Intent.ACTION_SEND.equals(action) && type != null) {
       
     } else {
       searchip = intent.getStringExtra("searchip");
     }
+    final String searchip = temp;
     
     // IPを検索する
     OkHttpClient client = new OkHttpClient();
