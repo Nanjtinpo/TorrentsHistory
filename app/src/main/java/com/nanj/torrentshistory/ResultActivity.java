@@ -29,6 +29,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -92,11 +93,11 @@ public class ResultActivity extends AppCompatActivity {
 	    LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	    linearlayoutcompat.setGravity(Gravity.CENTER);
 	    TextView textview = new TextView(ResultActivity.this);
+	    String temp2 = "";
             //
             if (result.isEmpty()) {
               textview.setText(searchip + " はTorrentを使用していません");
             } else {
-	      String temp2 = "";
 	      for (Element headline : tbody) {
 	        temp = temp + headline.ownText() + "\n";
               }
