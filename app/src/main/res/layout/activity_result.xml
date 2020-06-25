@@ -39,6 +39,13 @@
                 android:layout_gravity="bottom|right"
                 android:text="URL"
                 app:icon="@drawable/copy"/>
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/allcopy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:text="全て"
+                app:icon="@drawable/copy"/>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation"
