@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return true;
           case R.id.menuupdate:
-            new AppUpdater(this)
+            new AppUpdater(getActivity())
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
                 .setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory")
