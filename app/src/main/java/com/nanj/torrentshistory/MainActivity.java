@@ -99,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
                 .setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory")
+              	.setTitleOnUpdateAvailable("アップデートがあります")
+	              .setContentOnUpdateAvailable("「アップデートします」を押すとGitHubに飛びます")
+	              .setTitleOnUpdateNotAvailable("アップデートはありません")
+	              .setButtonUpdate("アップデートする")
+	              .setButtonDismiss("無視する")
+	              .setButtonDoNotShowAgain("二度と表示しない")
                 .start();
             return true;
         }
