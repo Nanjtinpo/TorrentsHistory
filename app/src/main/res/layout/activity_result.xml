@@ -23,10 +23,15 @@
                     style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
             </com.google.android.material.appbar.AppBarLayout>
             <androidx.core.widget.NestedScrollView
-                android:id="@+id/scrollview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/scrollview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.core.widget.NestedScrollView>
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/urlcopy"
