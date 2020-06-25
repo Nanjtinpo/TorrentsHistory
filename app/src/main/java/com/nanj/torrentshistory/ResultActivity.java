@@ -121,7 +121,7 @@ public class ResultActivity extends AppCompatActivity {
             finish();
             return true;
           case R.id.menuupdate:
-            new AppUpdater(getActivity())
+            new AppUpdater(ResultActivity.this)
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
                 .setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory")
