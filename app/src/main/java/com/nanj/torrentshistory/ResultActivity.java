@@ -184,6 +184,7 @@ public class ResultActivity extends AppCompatActivity {
       }
     clipboardManager.setPrimaryClip(ClipData.newPlainText("", copytext));
   }
+	
   // トーストを出す
   public void toastMake(String toasttext) {
     Toast.makeText(ResultActivity.this, toasttext, Toast.LENGTH_LONG).show();
