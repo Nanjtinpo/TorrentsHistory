@@ -91,13 +91,18 @@ public class ResultActivity extends AppCompatActivity {
             String result = tbody.text();
             if (result.isEmpty()) {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
-	      TextView textview = new TextView(this);
+	      TextView textview = new TextView(ResultActivity.this);
               textview.setText(searchip + " はTorrentを使用していません");
               textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 	      textview.setGravity(Gravity.CENTER);
               linearlayoutcompat.addView(textview);
             } else {
-              
+              LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
+	      TextView textview = new TextView(ResultActivity.this);
+              textview.setText(searchip + " のTorrent使用履歴\n\n" + result);
+              textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+	      textview.setGravity(Gravity.CENTER);
+              linearlayoutcompat.addView(textview);
             }
           }
         });
