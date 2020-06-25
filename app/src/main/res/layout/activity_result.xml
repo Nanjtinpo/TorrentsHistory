@@ -36,6 +36,7 @@
                 android:id="@+id/urlcopy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
                 android:text="URL"
                 app:icon="@drawable/copy"/>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
