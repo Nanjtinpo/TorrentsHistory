@@ -1,4 +1,4 @@
-package com.nanj.iknowtorrents;
+package com.nanj.torrentshistory;
 
 import android.content.Intent;
 import android.os.Bundle;

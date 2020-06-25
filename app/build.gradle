@@ -5,7 +5,7 @@ android {
   buildToolsVersion '29.0.3'
 
   defaultConfig {
-    applicationId 'com.nanj.iknowtorrents'
+    applicationId 'com.nanj.torrentshistory'
     minSdkVersion 21
     targetSdkVersion 29
     versionCode 2
