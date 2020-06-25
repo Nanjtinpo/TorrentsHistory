@@ -32,7 +32,7 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="https" android:host="iknowwhatyoudownload.com" android:pathPattern="/../peer/?ip=.*"/>
-        <data android:scheme="http" android:host="iknowwhatyoudownload.com" android:pathPattern="/../peer/?ip=.*"/>
+        <data android:scheme="http" android:host="iknowwhatyoudownload.com" android:pathPattern="/../peer/.*"/>
       </intent-filter>
     </activity>
   </application>
