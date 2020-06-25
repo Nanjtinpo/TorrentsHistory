@@ -125,6 +125,14 @@ public class ResultActivity extends AppCompatActivity {
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
                 .setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory")
+		.showAppUpdated(true)
+              	.setTitleOnUpdateAvailable("アップデートがあります")
+	        .setContentOnUpdateAvailable("「アップデートする」を押すとGitHubに飛びます")
+	        .setTitleOnUpdateNotAvailable("アップデートはありません")
+		.setContentOnUpdateNotAvailable("最新バージョンです")
+	        .setButtonUpdate("アップデートする")
+	        .setButtonDismiss("無視する")
+	        .setButtonDoNotShowAgain("二度と表示しない")
                 .start();
             return true;
         }
