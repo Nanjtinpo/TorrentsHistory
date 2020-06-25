@@ -67,9 +67,10 @@ public class ResultActivity extends AppCompatActivity {
     final String searchip = temp;
     
     // IPを検索する
+    final String searchurl = "https://iknowwhatyoudownload.com/en/peer/?ip=" + searchip;
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
-        .url("https://iknowwhatyoudownload.com/en/peer/?ip=" + searchip)
+        .url(searchurl)
         .build();
     client.newCall(request).enqueue(new Callback() {
       @Override
@@ -86,7 +87,7 @@ public class ResultActivity extends AppCompatActivity {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody");
             String result = tbody.text();
-            final TextView textView = (TextView)findViewById(R.id.resulttext);
+            TextView textView = (TextView)findViewById(R.id.resulttext);
             if (result.isEmpty()) {
               textView.setText(searchip + " はTorrentを使用していません");
             } else {
@@ -102,14 +103,16 @@ public class ResultActivity extends AppCompatActivity {
     urlcopyfab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        copyToClipboard(searchip);
+        copyToClipboard(searchurl);
+	Toast.makeText(this, "URLをコピーしました", Toast.LENGTH_LONG).show();
       }
     });
     ExtendedFloatingActionButton allcopyfab = findViewById(R.id.allcopy);
     allcopyfab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        copyToClipboard("All");
+        copyToClipboard("all");
+        Toast.makeText(this, "全てコピーしました", Toast.LENGTH_LONG).show();
       }
     });
     
