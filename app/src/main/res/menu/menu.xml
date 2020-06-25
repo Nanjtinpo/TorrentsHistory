@@ -4,7 +4,7 @@
             android:id="@+id/menuhome"
             android:title="ホーム"/>
     </group>
-    <group android:id="@+id/group_0">
+    <group android:id="@+id/group_1">
         <item
             android:id="@+id/menuabout"
             android:title="About"/>
