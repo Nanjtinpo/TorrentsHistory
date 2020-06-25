@@ -85,7 +85,7 @@ public class ResultActivity extends AppCompatActivity {
           @Override
           public void run() {
             Document doc = Jsoup.parse(html);
-            Elements tbody = doc.select("tbody");
+            Elements tbody = doc.select("tbody > tr > td");
             String result = tbody.text();
             if (result.isEmpty()) {
 	      TextView textView = (TextView)findViewById(R.id.resulttext);
