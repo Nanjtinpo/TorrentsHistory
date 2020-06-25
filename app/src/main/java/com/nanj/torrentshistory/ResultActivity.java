@@ -34,16 +34,17 @@ public class ResultActivity extends AppCompatActivity {
     // intentで送られたデータを受け取る
     Intent intent = getIntent();
     String temp = "";
-    if (Intent.ACTION_SEND.equals(intent.getAction()) && intent.getType() != null) {
+    if (Intent.ACTION_SEND.equals(intent.getAction())) {
       String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
-      if (sharedText != null) {
-        String ipregexp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
-        Pattern p = Pattern.compile(ipregexp);
-        Matcher m = p.matcher(sharedText);
-        if (m.find()){
-          temp = m.group();
-        }
+      String ipregexp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
+      Pattern p = Pattern.compile(ipregexp);
+      Matcher m = p.matcher(sharedText);
+      if (m.find()){
+        temp = m.group();
       }
+    } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+        temp = intent.getData().toString();
+      tenp = 
     } else {
       temp = intent.getStringExtra("searchip");
     }
