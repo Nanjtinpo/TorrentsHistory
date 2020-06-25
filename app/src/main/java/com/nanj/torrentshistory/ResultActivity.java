@@ -15,6 +15,7 @@ import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -81,7 +82,7 @@ public class ResultActivity extends AppCompatActivity {
           public void run() {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody");
-            final String result = tbody.text();
+            String result = tbody.text();
             final TextView textView = (TextView)findViewById(R.id.resulttext);
             if (result.isEmpty()) {
               textView.setText(searchip + " はTorrentを使用していません");
@@ -90,6 +91,22 @@ public class ResultActivity extends AppCompatActivity {
             }
           }
         });
+      }
+    });
+   
+    // FABのListener
+    ExtendedFloatingActionButton urlcopyfab = findViewById(R.id.urlcopy);
+    urlcopyfab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        copyToClipboard(searchip);
+      }
+    });
+    ExtendedFloatingActionButton allcopyfab = findViewById(R.id.allcopy);
+    allcopyfab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        copyToClipboard("All");
       }
     });
     
@@ -150,5 +167,15 @@ public class ResultActivity extends AppCompatActivity {
     } else {
       super.onBackPressed();
     }
+  }
+	
+  // クリップボードにコピー
+  public void copyToClipboard(String copytext) {
+    ClipboardManager clipboardManager =
+                (ClipboardManager) ConvertActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
+      if (null == clipboardManager) {
+        return;
+      }
+    clipboardManager.setPrimaryClip(ClipData.newPlainText("", copytext));
   }
 }
