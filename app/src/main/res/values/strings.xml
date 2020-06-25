@@ -1,4 +1,4 @@
 <resources>
-  <string name="about_text">NanJ TorrentsHistory Ver.1.0.0\nhttps://github.com/NanJ-Dev/TorrentsHistory/</string>
-  <string name="app_name">NanJ TorrentsHistory</string>
+  <string name="about_text">TorrentsHistory Ver.1.0.0\nhttps://github.com/NanJ-Dev/TorrentsHistory/</string>
+  <string name="app_name">TorrentsHistory</string>
 </resources>
