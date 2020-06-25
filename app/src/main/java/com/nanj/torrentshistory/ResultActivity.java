@@ -88,8 +88,14 @@ public class ResultActivity extends AppCompatActivity {
             Elements tbody = doc.select("tbody > tr > td");
             String result = tbody.text();
             if (result.isEmpty()) {
-	      TextView textView = (TextView)findViewById(R.id.resulttext);
-              textView.setText(searchip + " はTorrentを使用していません");
+              LinearLayout linearLayout = (LinearLayout)findViewById(R.id.scrollview);
+              TextView textview = new TextView(this);
+              textview.setText(searchip + " はTorrentを使用していません");
+              textview.setLayoutParams(new LayoutParams(
+                  LayoutParams.WRAP_CONTENT,
+                  LayoutParams.WRAP_CONTENT));
+              textview.gravity = Gravity.CENTER;
+              linearLayout.addView(textview);
             } else {
               
             }
