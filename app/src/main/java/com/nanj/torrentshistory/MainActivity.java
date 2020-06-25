@@ -95,17 +95,18 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return true;
           case R.id.menuupdate:
-            AppUpdater appUpdater  = new AppUpdater(MainActivity.this);
-            appUpdater.setDisplay(Display.DIALOG);
-            appUpdater.setUpdateFrom(UpdateFrom.GITHUB);
-            appUpdater.setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory");
-            appUpdater.setTitleOnUpdateAvailable("アップデートがあります");
-            appUpdater.setContentOnUpdateAvailable("「アップデートする」を押すとGitHubに飛びます");
-	    appUpdater.setTitleOnUpdateNotAvailable("アップデートはありません");
-	    appUpdater.setButtonUpdate("アップデートする");
-	    appUpdater.setButtonDismiss("無視する");
-	    appUpdater.setButtonDoNotShowAgain("二度と表示しない");
-            appUpdater.start();
+            new AppUpdater(MainActivity.this)
+                .setDisplay(Display.DIALOG)
+                .setUpdateFrom(UpdateFrom.GITHUB)
+                .setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory")
+		.showAppUpdated(true)
+              	.setTitleOnUpdateAvailable("アップデートがあります")
+	        .setContentOnUpdateAvailable("「アップデートします」を押すとGitHubに飛びます")
+	        .setTitleOnUpdateNotAvailable("アップデートはありません")
+	        .setButtonUpdate("アップデートする")
+	        .setButtonDismiss("無視する")
+	        .setButtonDoNotShowAgain("二度と表示しない")
+                .start();
             return true;
         }
         return false;
