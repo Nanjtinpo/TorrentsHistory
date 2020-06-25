@@ -93,17 +93,15 @@ public class ResultActivity extends AppCompatActivity {
 	    LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	    linearlayoutcompat.setGravity(Gravity.CENTER);
 	    TextView textview = new TextView(ResultActivity.this);
-	    String temp2 = "";
             //
             if (tbody.text().isEmpty()) {
               textview.setText(searchip + " はTorrentを使用していません");
             } else {
 	      for (Element headline : tbody) {
-	        temp = temp + headline.ownText() + "\n";
+	        textview.setText(headline.ownText() + "\n");
               }
             }
 	    //
-            textview.setText(temp2);
 	    textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
             linearlayoutcompat.addView(textview);
 	    //
