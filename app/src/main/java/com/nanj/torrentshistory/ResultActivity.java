@@ -88,7 +88,8 @@ public class ResultActivity extends AppCompatActivity {
           public void run() {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody > tr > td");
-            String result = tbody.text();
+            // String result = tbody.text();
+	    String result = tbody.toString();
 	    //
 	    LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	    linearlayoutcompat.setGravity(Gravity.CENTER);
