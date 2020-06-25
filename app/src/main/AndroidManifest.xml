@@ -32,7 +32,7 @@
         <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
         <data android:scheme="https"
           android:host="iknowwhatyoudownload.com"
-          android:pathPrefix="/https:/en/peer/?ip=126.217.190.19"/>
+          android:pathPrefix="/en/peer/?ip=126.217.190.19"/>
           <!-- note that the leading "/" is required for pathPrefix-->
       </intent-filter>
     </activity>
