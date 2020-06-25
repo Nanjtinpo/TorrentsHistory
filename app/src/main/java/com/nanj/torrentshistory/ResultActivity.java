@@ -44,7 +44,6 @@ public class ResultActivity extends AppCompatActivity {
       }
     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
         temp = intent.getData().toString();
-      tenp = 
     } else {
       temp = intent.getStringExtra("searchip");
     }
