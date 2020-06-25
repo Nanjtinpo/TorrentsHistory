@@ -61,7 +61,7 @@ public class ResultActivity extends AppCompatActivity {
       temp = intent.getStringExtra("searchip");
     }
     if (temp.isEmpty()) {
-      Toast.makeText(this, "IPアドレスが見つかりませんでした", Toast.LENGTH_LONG).show();
+      toastMake("IPアドレスが見つかりませんでした");
       finish();
     }
     final String searchip = temp;
@@ -104,7 +104,7 @@ public class ResultActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         copyToClipboard(searchurl);
-	Toast.makeText(this, "URLをコピーしました", Toast.LENGTH_LONG).show();
+	toastMake("URLをコピーしました");
       }
     });
     ExtendedFloatingActionButton allcopyfab = findViewById(R.id.allcopy);
@@ -112,7 +112,7 @@ public class ResultActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         copyToClipboard("all");
-        Toast.makeText(this, "全てコピーしました", Toast.LENGTH_LONG).show();
+        toastMake("全てコピーしました");
       }
     });
     
@@ -183,5 +183,9 @@ public class ResultActivity extends AppCompatActivity {
         return;
       }
     clipboardManager.setPrimaryClip(ClipData.newPlainText("", copytext));
+  }
+  // トーストを出す
+  public void toastMake(String toasttext) {
+    Toast.makeText(ResultActivity.this, toasttext, Toast.LENGTH_LONG).show();
   }
 }
