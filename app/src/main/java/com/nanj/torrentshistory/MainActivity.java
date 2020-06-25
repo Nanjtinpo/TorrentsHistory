@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
               	.setTitleOnUpdateAvailable("アップデートがあります")
 	        .setContentOnUpdateAvailable("「アップデートします」を押すとGitHubに飛びます")
 	        .setTitleOnUpdateNotAvailable("アップデートはありません")
+		.setContentOnUpdateNotAvailable("最新バージョンです")
 	        .setButtonUpdate("アップデートする")
 	        .setButtonDismiss("無視する")
 	        .setButtonDoNotShowAgain("二度と表示しない")
