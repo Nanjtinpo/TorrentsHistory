@@ -87,11 +87,11 @@ public class ResultActivity extends AppCompatActivity {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody");
             String result = tbody.text();
-            TextView textView = (TextView)findViewById(R.id.resulttext);
             if (result.isEmpty()) {
+	      TextView textView = (TextView)findViewById(R.id.resulttext);
               textView.setText(searchip + " はTorrentを使用していません");
             } else {
-              textView.setText(searchip + " のTorrent使用履歴\n\n" + result);
+              
             }
           }
         });
