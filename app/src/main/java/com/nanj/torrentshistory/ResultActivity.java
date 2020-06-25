@@ -87,9 +87,7 @@ public class ResultActivity extends AppCompatActivity {
           @Override
           public void run() {
             Document doc = Jsoup.parse(html);
-            Elements tbody = doc.select("tbody > tr > td");
-            // String result = tbody.text();
-	    String result = tbody.toString();
+            Elements tbody = doc.select("tbody tr td");
 	    //
 	    LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	    linearlayoutcompat.setGravity(Gravity.CENTER);
@@ -98,9 +96,13 @@ public class ResultActivity extends AppCompatActivity {
             if (result.isEmpty()) {
               textview.setText(searchip + " はTorrentを使用していません");
             } else {
-              textview.setText(searchip + " のTorrent使用履歴\n\n" + result);
+	      String temp2 = "";
+	      for (Element headline : tbody) {
+	        temp = temp + headline.ownText() + "\n";
+              }
             }
 	    //
+            textview.setText(temp2);
 	    textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
             linearlayoutcompat.addView(textview);
 	    //
