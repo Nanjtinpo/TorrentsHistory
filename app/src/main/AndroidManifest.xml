@@ -29,11 +29,7 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
-        <data android:scheme="https"
-          android:host="iknowwhatyoudownload.com"
-          android:pathPrefix="/en/peer/?ip=126.217.190.19"/>
-          <!-- note that the leading "/" is required for pathPrefix-->
+        <data android:scheme="http" android:host="iknowwhatyoudownload.com" android:pathPrefix="/*/peer/?ip=*"/>
       </intent-filter>
     </activity>
   </application>
