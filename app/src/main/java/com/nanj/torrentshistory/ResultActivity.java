@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.github.javiersantos.appupdater.AppUpdater;
@@ -88,8 +89,12 @@ public class ResultActivity extends AppCompatActivity {
             Elements tbody = doc.select("tbody > tr > td");
             String result = tbody.text();
             if (result.isEmpty()) {
-	      TextView textView = (TextView)findViewById(R.id.resulttext);
-              textView.setText(searchip + " はTorrentを使用していません");
+	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
+	      TextView textview = new TextView(this);
+              textview.setText(searchip + " はTorrentを使用していません");
+              textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+	      textview.setGravity(Gravity.CENTER);
+              linearlayoutcompat.addView(textview);
             } else {
               
             }
