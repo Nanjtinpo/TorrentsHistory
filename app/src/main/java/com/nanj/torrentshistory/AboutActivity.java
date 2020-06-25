@@ -47,7 +47,7 @@ public class AboutActivity extends AppCompatActivity {
           case R.id.menuabout:
             return true;
           case R.id.menuupdate:
-            new AppUpdater(this)
+            new AppUpdater(getActivity())
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
                 .setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory")
