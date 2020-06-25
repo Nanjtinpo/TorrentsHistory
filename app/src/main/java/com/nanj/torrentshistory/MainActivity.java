@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             appUpdater.setUpdateFrom(UpdateFrom.GITHUB);
             appUpdater.setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory");
             appUpdater.setTitleOnUpdateAvailable("アップデートがあります");
-            appUpdater.setContentOnUpdateAvailable("「アップデートする」を押すとGitHubに飛びます")
+            appUpdater.setContentOnUpdateAvailable("「アップデートする」を押すとGitHubに飛びます");
 	    appUpdater.setTitleOnUpdateNotAvailable("アップデートはありません");
 	    appUpdater.setButtonUpdate("アップデートする");
 	    appUpdater.setButtonDismiss("無視する");
