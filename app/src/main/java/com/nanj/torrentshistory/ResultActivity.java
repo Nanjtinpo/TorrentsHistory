@@ -43,7 +43,13 @@ public class ResultActivity extends AppCompatActivity {
         temp = m.group();
       }
     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-        temp = intent.getData().toString();
+      String searchText = intent.getData().toString();
+      String ipregexp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
+      Pattern p = Pattern.compile(ipregexp);
+      Matcher m = p.matcher(searchText);
+      if (m.find()){
+        temp = m.group();
+      }
     } else {
       temp = intent.getStringExtra("searchip");
     }
