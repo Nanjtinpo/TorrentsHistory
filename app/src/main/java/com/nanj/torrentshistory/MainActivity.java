@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 .setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory")
 		.showAppUpdated(true)
               	.setTitleOnUpdateAvailable("アップデートがあります")
-	        .setContentOnUpdateAvailable("「アップデートします」を押すとGitHubに飛びます")
+	        .setContentOnUpdateAvailable("「アップデートする」を押すとGitHubに飛びます")
 	        .setTitleOnUpdateNotAvailable("アップデートはありません")
 		.setContentOnUpdateNotAvailable("最新バージョンです")
 	        .setButtonUpdate("アップデートする")
