@@ -175,7 +175,7 @@ public class ResultActivity extends AppCompatActivity {
   // クリップボードにコピー
   public void copyToClipboard(String copytext) {
     ClipboardManager clipboardManager =
-                (ClipboardManager) ConvertActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
+                (ClipboardManager) ResultActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
       if (null == clipboardManager) {
         return;
       }
