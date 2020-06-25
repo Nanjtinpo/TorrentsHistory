@@ -117,6 +117,13 @@ public class ResultActivity extends AppCompatActivity {
             startActivity(new Intent(getApplication(), AboutActivity.class));
             finish();
             return true;
+          case R.id.menuupdate:
+            new AppUpdater(this)
+                .setDisplay(Display.DIALOG)
+                .setUpdateFrom(UpdateFrom.GITHUB)
+                .setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory")
+                .start();
+            return true;
         }
         return false;
       }

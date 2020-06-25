@@ -43,6 +43,13 @@ public class AboutActivity extends AppCompatActivity {
             return true;
           case R.id.menuabout:
             return true;
+          case R.id.menuupdate:
+            new AppUpdater(this)
+                .setDisplay(Display.DIALOG)
+                .setUpdateFrom(UpdateFrom.GITHUB)
+                .setGitHubUserAndRepo("NanJ-Dev", "TorrentsHistory")
+                .start();
+            return true;
         }
         return false;
       }

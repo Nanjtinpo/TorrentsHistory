@@ -4,7 +4,12 @@
             android:id="@+id/menuhome"
             android:title="ホーム"/>
     </group>
+    <group android:id="@+id/group_0">
         <item
             android:id="@+id/menuabout"
             android:title="About"/>
+    </group>
+    <item
+        android:id="@+id/menuupdate"
+        android:title="アップデートを確認"/>
 </menu>
