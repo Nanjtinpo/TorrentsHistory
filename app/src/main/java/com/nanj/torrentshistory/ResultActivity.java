@@ -42,7 +42,7 @@ public class ResultActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_result);
-    
+
     // intentで送られたデータを受け取る
     Intent intent = getIntent();
     String temp = "";
@@ -70,7 +70,7 @@ public class ResultActivity extends AppCompatActivity {
       finish();
     }
     final String searchip = temp;
-    
+
     // IPを検索する
     final String searchurl = "https://iknowwhatyoudownload.com/en/peer/?ip=" + searchip;
     OkHttpClient client = new OkHttpClient();
@@ -122,7 +122,7 @@ public class ResultActivity extends AppCompatActivity {
         toastMake("全てコピーしました");
       }
     });
-    
+
     // TopAppBarのメニューアイコンのListener
     MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
     materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -170,7 +170,7 @@ public class ResultActivity extends AppCompatActivity {
       }
     });
   }
-  
+
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
@@ -181,7 +181,7 @@ public class ResultActivity extends AppCompatActivity {
       super.onBackPressed();
     }
   }
-	
+
   // クリップボードにコピー
   public void copyToClipboard(String copytext) {
     ClipboardManager clipboardManager =
@@ -191,7 +191,7 @@ public class ResultActivity extends AppCompatActivity {
       }
     clipboardManager.setPrimaryClip(ClipData.newPlainText("", copytext));
   }
-	
+
   // トーストを出す
   public void toastMake(String toasttext) {
     Toast.makeText(ResultActivity.this, toasttext, Toast.LENGTH_LONG).show();
