@@ -4,7 +4,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
   <androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/drawer"
+    android:id="@+id/drawerlayout"
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.google.android.material.appbar.MaterialToolbar
-          android:id="@+id/topappbar"
+          android:id="@+id/materialtoolbar"
           android:layout_width="match_parent"
           android:layout_height="?attr/actionBarSize"
           app:title="About"
@@ -38,7 +38,7 @@
       </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
   <com.google.android.material.navigation.NavigationView
-    android:id="@+id/navigation"
+    android:id="@+id/navigationview"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layout_gravity="start|left"
