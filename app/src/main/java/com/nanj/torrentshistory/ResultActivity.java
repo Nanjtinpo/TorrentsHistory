@@ -63,7 +63,7 @@ public class ResultActivity extends AppCompatActivity {
         temp = m.group();
       }
     } else {
-      temp = intent.getStringExtra("searchip");
+      temp = intent.getStringExtra("searchIP");
     }
     if (temp.isEmpty()) {
       toastMake("IPアドレスが見つかりませんでした");
