@@ -100,8 +100,8 @@ public class ResultActivity extends AppCompatActivity {
 		h = h + headline.text() + "\n";
                 g = g++
                 LinearLayout linearLayout = (LinearLayout)inflater.inflate(R.layout.add_cardview, null);
-                MaterialCardView cardView = (MaterialCardView)linearLayout.findViewById(R.id.cardView);
-                TextView textBox = (TextView)linearLayout.findViewById(R.id.textBox);
+                MaterialCardView cardView = (MaterialCardView)linearLayout.findViewById(R.id.card);
+                TextView textBox = (TextView)linearLayout.findViewById(R.id.textview);
                 textBox.setText("CardView" + g);
                 cardView.setTag(g);
                 cardView.setOnClickListener(new View.OnClickListener() {
