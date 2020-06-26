@@ -1,15 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <group android:id="@+id/group_0">
     <item
-      android:id="@+id/menuhome"
+      android:id="@+id/home"
       android:title="ホーム"/>
     </group>
   <group android:id="@+id/group_1">
     <item
-      android:id="@+id/menuabout"
+      android:id="@+id/about"
       android:title="About"/>
   </group>
   <item
-    android:id="@+id/menuupdate"
+    android:id="@+id/update"
     android:title="アップデートを確認"/>
 </menu>
