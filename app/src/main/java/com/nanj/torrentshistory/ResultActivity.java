@@ -98,7 +98,7 @@ public class ResultActivity extends AppCompatActivity {
 	      String h = "";
 	      for (Element headline : tbody) {
 		h = h + headline.text() + "\n";
-                g = g++
+                g = g++;
                 LinearLayout linearLayout = (LinearLayout)inflater.inflate(R.layout.add_cardview, null);
                 MaterialCardView cardView = (MaterialCardView)linearLayout.findViewById(R.id.card);
                 TextView textBox = (TextView)linearLayout.findViewById(R.id.textview);
@@ -106,7 +106,7 @@ public class ResultActivity extends AppCompatActivity {
                 cardView.setTag(g);
                 cardView.setOnClickListener(new View.OnClickListener() {
                   @Override
-                　public void onClick(View v) {
+                    public void onClick(View v) {
                     toastMake(String.valueOf(v.getTag()) + "番目のCardViewがクリックされました");
                   }
                 });
