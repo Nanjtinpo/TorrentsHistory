@@ -29,18 +29,11 @@
         <androidx.appcompat.widget.LinearLayoutCompat
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:weightSum="5"
 	  android:orientation="vertical">
-	  <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
 	  <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/searchip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:layout_weight="1"
             android:hint="検索するIP"
             app:endIconMode="clear_text">
             <com.google.android.material.textfield.TextInputEditText
@@ -52,7 +45,6 @@
             android:checkedButton="@+id/selectip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal">
             <RadioButton
               android:id="@+id/selectip"
@@ -65,22 +57,17 @@
               android:layout_height="wrap_content"
               android:text="ホスト名"/>
           </RadioGroup>
-	  <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
 	  <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-	    android:layout_gravity="center"
 	    android:gravity="center"
-	    android:layout_weight="1"
 	    android:weightSum="3"
 	    android:orientation="horizontal">
             <Button
               android:id="@+id/searchstart"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+	      android:layout_weight="1"
               android:text="検索"/>
 	    <Space
               android:layout_width="wrap_content"
@@ -90,6 +77,7 @@
               android:id="@+id/searchmyip"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+	      android:layout_weight="1"
               android:text="自分のIPを検索"/>
 	  </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
