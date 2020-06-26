@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
         String searchIP = textInputLayout.getEditText().getText().toString();
         Intent intent = new Intent(getApplication(), ResultActivity.class);
-        intent.putExtra("searchip", searchIP);
+        intent.putExtra("searchIP", searchIP);
         startActivity(intent);
       }
     });
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
               @Override
               public void run() {
                 Intent intent = new Intent(getApplication(), ResultActivity.class);
-                intent.putExtra("searchip", myPublicIP);
+                intent.putExtra("searchIP", myPublicIP);
                 startActivity(intent);
               }
             });
