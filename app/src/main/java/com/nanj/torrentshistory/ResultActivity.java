@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -96,10 +97,11 @@ public class ResultActivity extends AppCompatActivity {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	      LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 	      String h = "";
+	      String g = "";
 	      for (Element headline : tbody) {
 		h = h + headline.text() + "\n";
                 g = g++;
-                LinearLayout linearLayout = (LinearLayout)inflater.inflate(R.layout.add_cardview, null);
+                LinearLayoutCompat linearLayout = (LinearLayoutCompat)inflater.inflate(R.layout.add_cardview, null);
                 MaterialCardView cardView = (MaterialCardView)linearLayout.findViewById(R.id.card);
                 TextView textBox = (TextView)linearLayout.findViewById(R.id.textview);
                 textBox.setText("CardView" + g);
