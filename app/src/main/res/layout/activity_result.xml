@@ -29,7 +29,8 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/scrollview"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.core.widget.NestedScrollView>
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
