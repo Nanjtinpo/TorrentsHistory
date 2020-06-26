@@ -6,7 +6,6 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -14,6 +13,7 @@ import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import okhttp3.Call;
@@ -30,18 +30,18 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     // ボタンのListener
-    Button searchstartbutton = findViewById(R.id.searchstart);
-    searchstartbutton.setOnClickListener(new View.OnClickListener() {
+    MaterialButton searchStart = findViewById(R.id.searchstart);
+    searchStart.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        TextInputLayout textField = (TextInputLayout)findViewById(R.id.searchip);
-        String searchip = textField.getEditText().getText().toString();
+        TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
+        String searchIP = textInputLayout.getEditText().getText().toString();
         Intent intent = new Intent(getApplication(), ResultActivity.class);
-        intent.putExtra("searchip", searchip);
+        intent.putExtra("searchip", searchIP);
         startActivity(intent);
       }
     });
-    Button searchmyipbutton = findViewById(R.id.searchmyip);
-    searchmyipbutton.setOnClickListener(new View.OnClickListener() {
+    Button searchStartMyIP = findViewById(R.id.searchstartmyip);
+    searchStartMyIP.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -55,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
             if(!response.isSuccessful()){
               throw new IOException("Error : " + response);
             }
-            final String myip = response.body().string();
+            final String myPublicIP = response.body().string();
             runOnUiThread(new Runnable() {
               @Override
               public void run() {
                 Intent intent = new Intent(getApplication(), ResultActivity.class);
-                intent.putExtra("searchip", myip);
+                intent.putExtra("searchip", myPublicIP);
                 startActivity(intent);
               }
             });
