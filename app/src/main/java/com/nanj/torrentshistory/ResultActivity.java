@@ -101,7 +101,7 @@ public class ResultActivity extends AppCompatActivity {
 	        textview.append(headline.text() + "\n");
                 for (int i = 0; i < 3; ++i) {
                   View view = getLayoutInflater().inflate(R.layout.add_cardview, null);
-                  layout.addView(view);
+                  linearlayoutcompat.addView(view);
                 }
               }
             }
