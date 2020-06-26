@@ -90,20 +90,14 @@ public class ResultActivity extends AppCompatActivity {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody > tr > td");
             if (tbody.text().isEmpty()) {
-              LinearLayoutCompat centerlayout = (LinearLayoutCompat)findViewById(R.id.scrollview);
-	      TextView textview = new TextView(ResultActivity.this);
-	      centerlayout.setGravity(Gravity.CENTER);
+	      TextView textview = findViewById(R.id.errorview);
               textview.setText(searchip + " はTorrentを使用していません");
-	      textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-              centerlayout.addView(textview);
 	      textview.setVisibility(View.VISIBLE);
             } else {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	      String h = "";
 	      for (Element headline : tbody) {
 	        h = h + headline.text() + "\n";
-                View view = getLayoutInflater().inflate(R.layout.add_cardview, null);
-                linearlayoutcompat.addView(view);
               }
             }
           }
