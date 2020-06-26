@@ -83,7 +83,6 @@ public class AboutActivity extends AppCompatActivity {
   }
 
   // ドロワーを開けたり閉じたりする
-  @Override
   public void opencloseDrawer(boolean openclose) {
     if (openclose) {
       drawerLayout.openDrawer(GravityCompat.START);
