@@ -98,7 +98,7 @@ public class ResultActivity extends AppCompatActivity {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	      LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 	      String h = "";
-	      int g = "";
+	      int g = 0;
 	      for (Element headline : tbody) {
 		h = h + headline.text() + "\n";
                 g = g++;
