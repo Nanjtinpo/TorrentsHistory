@@ -16,11 +16,11 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
 public class AboutActivity extends AppCompatActivity {
-  DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_about);
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
 
     // TopAppBarのナビゲーションアイコンのListener
     MaterialToolbar materialToolBar = findViewById(R.id.materialtoolbar);
@@ -84,6 +84,7 @@ public class AboutActivity extends AppCompatActivity {
 
   // ドロワーを開けたり閉じたりする
   public void opencloseDrawer(boolean openclose) {
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
     if (openclose) {
       drawerLayout.openDrawer(GravityCompat.START);
     } else {
