@@ -96,6 +96,7 @@ public class ResultActivity extends AppCompatActivity {
               textview.setText(searchip + " はTorrentを使用していません");
 	      textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
               centerlayout.addView(textview);
+	      setVisibility(View.VISIBLE);
             } else {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	      for (Element headline : tbody) 
