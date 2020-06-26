@@ -128,29 +128,29 @@ public class ResultActivity extends AppCompatActivity {
     materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer);
+        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawerlayout);
         drawer.openDrawer(GravityCompat.START);
       }
     });
 
     // ナビゲーションドロワーのListener
-    NavigationView navigationView = (NavigationView)findViewById(R.id.navigation);
+    NavigationView navigationView = (NavigationView)findViewById(R.id.navigationview);
     navigationView.setNavigationItemSelectedListener(
     new NavigationView.OnNavigationItemSelectedListener() {
       @Override
       public boolean onNavigationItemSelected(MenuItem item) {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer);
+        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawerlayout);
         drawer.closeDrawer(Gravity.LEFT);
         switch (item.getItemId()) {
-          case R.id.menuhome:
+          case R.id.home:
             startActivity(new Intent(getApplication(), MainActivity.class));
             finish();
             return true;
-          case R.id.menuabout:
+          case R.id.about:
             startActivity(new Intent(getApplication(), AboutActivity.class));
             finish();
             return true;
-          case R.id.menuupdate:
+          case R.id.update:
             new AppUpdater(ResultActivity.this)
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
@@ -174,7 +174,7 @@ public class ResultActivity extends AppCompatActivity {
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerlayout);
     if (drawer.isDrawerOpen(GravityCompat.START)) {
       drawer.closeDrawer(Gravity.LEFT);
     } else {
