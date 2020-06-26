@@ -99,12 +99,12 @@ public class ResultActivity extends AppCompatActivity {
 	      LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 	      String h = "";
 	      int g = 0;
+	      LinearLayoutCompat linearLayout = (LinearLayoutCompat)inflater.inflate(R.layout.add_cardview, null);
+              MaterialCardView cardView = (MaterialCardView)linearLayout.findViewById(R.id.card);
+              TextView textBox = (TextView)linearLayout.findViewById(R.id.textiew);
 	      for (Element headline : tbody) {
 		h = h + headline.text() + "\n";
                 g = g++;
-                LinearLayoutCompat linearLayout = (LinearLayoutCompat)inflater.inflate(R.layout.add_cardview, null);
-                MaterialCardView cardView = (MaterialCardView)linearLayout.findViewById(R.id.card);
-                TextView textBox = (TextView)linearLayout.findViewById(R.id.textiew);
                 textBox.setText("CardView" + g);
                 cardView.setTag(g);
                 cardView.setOnClickListener(new View.OnClickListener() {
