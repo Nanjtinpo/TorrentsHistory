@@ -30,8 +30,7 @@
                     android:id="@+id/errorview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:visibility="gone"/>
+                    android:layout_gravity="center"/>
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/scrollview"
                     android:layout_width="match_parent"
