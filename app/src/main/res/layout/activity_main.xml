@@ -29,6 +29,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+	  android:gravity="center"
 	  android:orientation="vertical">
 	  <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/searchip"
@@ -60,14 +61,12 @@
 	  <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-	    android:gravity="center"
 	    android:weightSum="3"
 	    android:orientation="horizontal">
             <Button
               android:id="@+id/searchstart"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-	      android:layout_weight="1"
               android:text="検索"/>
 	    <Space
               android:layout_width="wrap_content"
@@ -77,7 +76,6 @@
               android:id="@+id/searchmyip"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-	      android:layout_weight="1"
               android:text="自分のIPを検索"/>
 	  </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
