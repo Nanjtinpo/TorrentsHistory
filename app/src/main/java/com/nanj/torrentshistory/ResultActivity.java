@@ -21,6 +21,7 @@ import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import okhttp3.Call;
@@ -97,13 +98,13 @@ public class ResultActivity extends AppCompatActivity {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	      LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 	      String h = "";
-	      String g = "";
+	      int g = "";
 	      for (Element headline : tbody) {
 		h = h + headline.text() + "\n";
                 g = g++;
                 LinearLayoutCompat linearLayout = (LinearLayoutCompat)inflater.inflate(R.layout.add_cardview, null);
                 MaterialCardView cardView = (MaterialCardView)linearLayout.findViewById(R.id.card);
-                TextView textBox = (TextView)linearLayout.findViewById(R.id.textview);
+                TextView textBox = (TextView)linearLayout.findViewById(R.id.textiew);
                 textBox.setText("CardView" + g);
                 cardView.setTag(g);
                 cardView.setOnClickListener(new View.OnClickListener() {
