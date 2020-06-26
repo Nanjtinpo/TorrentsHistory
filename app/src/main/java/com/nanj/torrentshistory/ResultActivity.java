@@ -99,7 +99,7 @@ public class ResultActivity extends AppCompatActivity {
 	      textview.setVisibility(View.VISIBLE);
             } else {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
-	      for (Element headline : tbody) 
+	      for (Element headline : tbody) {
 	        String h = h + headline.text() + "\n";
                 for (int i = 0; i < 3; ++i) {
                   View view = getLayoutInflater().inflate(R.layout.add_cardview, null);
