@@ -90,9 +90,8 @@ public class ResultActivity extends AppCompatActivity {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody > tr > td");
             if (tbody.text().isEmpty()) {
-	      TextView textview = findViewById(R.id.errorview);
-              textview.setText(searchip + " はTorrentを使用していません");
-	      textview.setVisibility(View.VISIBLE);
+              toastMake(searchip + " はTorrentを使用していません");
+	      finish();
             } else {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
 	      String h = "";
