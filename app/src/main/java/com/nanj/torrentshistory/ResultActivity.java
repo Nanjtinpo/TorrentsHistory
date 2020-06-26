@@ -97,7 +97,9 @@ public class ResultActivity extends AppCompatActivity {
             if (tbody.text().isEmpty()) {
               textview.setText(searchip + " はTorrentを使用していません");
             } else {
-	        textview.setText(tbody.first().text());
+	      for (Element headline : tbody) {
+	        textview.append(headline.text() + "\n");
+              }
             }
 	    //
 	    textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
