@@ -27,8 +27,7 @@ public class AboutActivity extends AppCompatActivity {
     materialToolBar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
-        drawerLayout.openDrawer(GravityCompat.START);
+        opencloseDrawer(true);
       }
     });
 
@@ -40,8 +39,7 @@ public class AboutActivity extends AppCompatActivity {
       @Override
       public boolean onNavigationItemSelected(MenuItem item) {
 	// ドロワーを閉じる
-        DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
-        drawerLayout.closeDrawer(Gravity.LEFT);
+        opencloseDrawer(false);
         switch (item.getItemId()) {
           case R.id.menuhome:
             // MainActivityに飛ぶ
@@ -76,11 +74,21 @@ public class AboutActivity extends AppCompatActivity {
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
-    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
     if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-      drawerLayout.closeDrawer(Gravity.LEFT);
+      opencloseDrawer(false);
     } else {
       super.onBackPressed();
+    }
+  }
+
+  // ドロワーを開けたり閉じたりする
+  @Override
+  public void opencloseDrawer(boolean openclose) {
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+    if (openclose) {
+      drawerLayout.openDrawer(GravityCompat.START);
+    } else {
+      drawerLayout.closeDrawer(Gravity.LEFT);
     }
   }
 }
