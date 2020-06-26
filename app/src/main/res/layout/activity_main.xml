@@ -29,6 +29,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          android:weightSum="5"
 	  android:orientation="vertical">
 	  <Space
             android:layout_width="wrap_content"
@@ -72,13 +73,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 	    android:layout_gravity="center"
+	    android:gravity="center"
 	    android:layout_weight="1"
+	    android:weightSum="3"
 	    android:orientation="horizontal">
             <Button
               android:id="@+id/searchstart"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="検索"/>
+	    <Space
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"/>
             <Button
               android:id="@+id/searchmyip"
               android:layout_width="wrap_content"
