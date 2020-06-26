@@ -22,26 +22,26 @@ public class AboutActivity extends AppCompatActivity {
     setContentView(R.layout.activity_about);
 
     // TopAppBarのナビゲーションアイコンのListener
-    MaterialToolbar materialtoolbar = findViewById(R.id.topappbar);
+    MaterialToolbar materialToolBar = findViewById(R.id.materialtoolbar);
     // ナビゲーションアイコンをクリックするとドロワーを開く
-    materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
+    materialToolBar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        DrawerLayout drawerlayout = findViewById(R.id.drawerlayout);
-        drawerlayout.openDrawer(GravityCompat.START);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+        drawerLayout.openDrawer(GravityCompat.START);
       }
     });
 
     // ナビゲーションドロワーのListener
-    NavigationView navigationView = findViewById(R.id.navigation);
+    NavigationView navigationView = findViewById(R.id.navigationview);
     // ドロワーの中の項目をクリックすると処理を実行する
     navigationView.setNavigationItemSelectedListener(
     new NavigationView.OnNavigationItemSelectedListener() {
       @Override
       public boolean onNavigationItemSelected(MenuItem item) {
 	// ドロワーを閉じる
-        DrawerLayout drawerlayout = (DrawerLayout)findViewById(R.id.drawerlayout);
-        drawerlayout.closeDrawer(Gravity.LEFT);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+        drawerLayout.closeDrawer(Gravity.LEFT);
         switch (item.getItemId()) {
           case R.id.menuhome:
             // MainActivityに飛ぶ
@@ -76,9 +76,9 @@ public class AboutActivity extends AppCompatActivity {
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
-    DrawerLayout drawerlayout = findViewById(R.id.drawerlayout);
-    if (drawerlayout.isDrawerOpen(GravityCompat.START)) {
-      drawerlayout.closeDrawer(Gravity.LEFT);
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+      drawerLayout.closeDrawer(Gravity.LEFT);
     } else {
       super.onBackPressed();
     }
