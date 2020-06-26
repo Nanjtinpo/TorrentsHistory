@@ -99,12 +99,11 @@ public class ResultActivity extends AppCompatActivity {
 	      textview.setVisibility(View.VISIBLE);
             } else {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
+	      String h = "";
 	      for (Element headline : tbody) {
-	        String h = h + headline.text() + "\n";
-                for (int i = 0; i < 3; ++i) {
-                  View view = getLayoutInflater().inflate(R.layout.add_cardview, null);
-                  linearlayoutcompat.addView(view);
-                }
+	        h = h + headline.text() + "\n";
+                View view = getLayoutInflater().inflate(R.layout.add_cardview, null);
+                linearlayoutcompat.addView(view);
               }
             }
           }
