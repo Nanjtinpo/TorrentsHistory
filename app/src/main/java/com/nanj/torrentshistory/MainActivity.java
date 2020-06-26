@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
       }
     });
-    Button searchStartMyIP = findViewById(R.id.searchstartmyip);
+    MaterialButton searchStartMyIP = findViewById(R.id.searchstartmyip);
     searchStartMyIP.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         OkHttpClient client = new OkHttpClient();
@@ -69,32 +69,33 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    // TopAppBarのメニューアイコンのListener
-    MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
-    materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
+    // TopAppBarのナビゲーションアイコンのListener
+    MaterialToolbar materialToolBar = findViewById(R.id.materialtoolbar);
+    // ナビゲーションアイコンをクリックするとドロワーを開く
+    materialToolBar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer);
-        drawer.openDrawer(GravityCompat.START);
+        opencloseDrawer(true);
       }
     });
 
     // ナビゲーションドロワーのListener
-    NavigationView navigationView = (NavigationView)findViewById(R.id.navigation);
+    NavigationView navigationView = findViewById(R.id.navigationview);
+    // ドロワーの中の項目をクリックすると処理を実行する
     navigationView.setNavigationItemSelectedListener(
     new NavigationView.OnNavigationItemSelectedListener() {
       @Override
       public boolean onNavigationItemSelected(MenuItem item) {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer);
-        drawer.closeDrawer(Gravity.LEFT);
+	// ドロワーを閉じる
+        opencloseDrawer(false);
         switch (item.getItemId()) {
-          case R.id.menuhome:
+          case R.id.home:
             return true;
-          case R.id.menuabout:
+          case R.id.about:
             startActivity(new Intent(getApplication(), AboutActivity.class));
             finish();
             return true;
-          case R.id.menuupdate:
+          case R.id.update:
             new AppUpdater(MainActivity.this)
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
@@ -118,11 +119,21 @@ public class MainActivity extends AppCompatActivity {
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-    if (drawer.isDrawerOpen(GravityCompat.START)) {
-      drawer.closeDrawer(Gravity.LEFT);
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+      opencloseDrawer(false);
     } else {
       super.onBackPressed();
+    }
+  }
+
+  // ドロワーを開けたり閉じたりする
+  public void opencloseDrawer(boolean openclose) {
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+    if (openclose) {
+      drawerLayout.openDrawer(GravityCompat.START);
+    } else {
+      drawerLayout.closeDrawer(Gravity.LEFT);
     }
   }
 }
