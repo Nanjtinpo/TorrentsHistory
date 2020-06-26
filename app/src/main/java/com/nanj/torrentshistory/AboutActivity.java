@@ -21,32 +21,38 @@ public class AboutActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_about);
 
-    // TopAppBarのメニューアイコンのListener
-    MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
+    // TopAppBarのナビゲーションアイコンのListener
+    MaterialToolbar materialtoolbar = findViewById(R.id.topappbar);
+    // ナビゲーションアイコンをクリックするとドロワーを開く
     materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer);
-        drawer.openDrawer(GravityCompat.START);
+        DrawerLayout drawerlayout = findViewById(R.id.drawerlayout);
+        drawerlayout.openDrawer(GravityCompat.START);
       }
     });
 
     // ナビゲーションドロワーのListener
-    NavigationView navigationView = (NavigationView)findViewById(R.id.navigation);
+    NavigationView navigationView = findViewById(R.id.navigation);
+    // ドロワーの中の項目をクリックすると処理を実行する
     navigationView.setNavigationItemSelectedListener(
     new NavigationView.OnNavigationItemSelectedListener() {
       @Override
       public boolean onNavigationItemSelected(MenuItem item) {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer);
-        drawer.closeDrawer(Gravity.LEFT);
+	// ドロワーを閉じる
+        DrawerLayout drawerlayout = (DrawerLayout)findViewById(R.id.drawerlayout);
+        drawerlayout.closeDrawer(Gravity.LEFT);
         switch (item.getItemId()) {
           case R.id.menuhome:
+            // MainActivityに飛ぶ
             startActivity(new Intent(getApplication(), MainActivity.class));
             finish();
             return true;
           case R.id.menuabout:
+            // 何もしない
             return true;
           case R.id.menuupdate:
+            // アップデートを確認する
             new AppUpdater(AboutActivity.this)
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
@@ -70,9 +76,9 @@ public class AboutActivity extends AppCompatActivity {
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-    if (drawer.isDrawerOpen(GravityCompat.START)) {
-      drawer.closeDrawer(Gravity.LEFT);
+    DrawerLayout drawerlayout = findViewById(R.id.drawerlayout);
+    if (drawerlayout.isDrawerOpen(GravityCompat.START)) {
+      drawerlayout.closeDrawer(Gravity.LEFT);
     } else {
       super.onBackPressed();
     }
