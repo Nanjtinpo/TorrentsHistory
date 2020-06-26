@@ -124,7 +124,7 @@ public class ResultActivity extends AppCompatActivity {
     });
 
     // TopAppBarのメニューアイコンのListener
-    MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.topappbar);
+    MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.materialtoolbar);
     materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
