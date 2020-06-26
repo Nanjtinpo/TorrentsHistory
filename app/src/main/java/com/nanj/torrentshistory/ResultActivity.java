@@ -89,26 +89,23 @@ public class ResultActivity extends AppCompatActivity {
           public void run() {
             Document doc = Jsoup.parse(html);
             Elements tbody = doc.select("tbody > tr > td");
-	    //
-	    LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
-	    linearlayoutcompat.setGravity(Gravity.CENTER);
-	    TextView textview = new TextView(ResultActivity.this);
-            //
             if (tbody.text().isEmpty()) {
+              LinearLayoutCompat centerlayout = (LinearLayoutCompat)findViewById(R.id.scrollview);
+	      TextView textview = new TextView(ResultActivity.this);
+	      centerlayout.setGravity(Gravity.CENTER);
               textview.setText(searchip + " はTorrentを使用していません");
+	      textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+              centerlayout.addView(textview);
             } else {
-	      for (Element headline : tbody) {
-	        textview.append(headline.text() + "\n");
+	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
+	      for (Element headline : tbody) 
+	        String h = h + headline.text() + "\n";
                 for (int i = 0; i < 3; ++i) {
                   View view = getLayoutInflater().inflate(R.layout.add_cardview, null);
                   linearlayoutcompat.addView(view);
                 }
               }
             }
-	    //
-	    textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-            linearlayoutcompat.addView(textview);
-	    //
           }
         });
       }
