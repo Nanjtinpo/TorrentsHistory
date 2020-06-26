@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     // ボタンのListener
     MaterialButton searchStart = findViewById(R.id.searchstart);
+    // 「検索」ボタンをおすとTextInputLayoutに入れたIPと一緒にResultActivityに飛ぶ
     searchStart.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
       }
     });
     MaterialButton searchStartMyIP = findViewById(R.id.searchstartmyip);
+    // 「自分のIPを検索」ボタンをおすとAPIから取得したパブリックIPと一緒にResultActivityに飛ぶ
     searchStartMyIP.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         OkHttpClient client = new OkHttpClient();
@@ -90,12 +92,15 @@ public class MainActivity extends AppCompatActivity {
         opencloseDrawer(false);
         switch (item.getItemId()) {
           case R.id.home:
+	    // 何もしない
             return true;
           case R.id.about:
+	    // AboutActivityに飛ぶ
             startActivity(new Intent(getApplication(), AboutActivity.class));
             finish();
             return true;
           case R.id.update:
+	    // アップデートを確認する
             new AppUpdater(MainActivity.this)
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
