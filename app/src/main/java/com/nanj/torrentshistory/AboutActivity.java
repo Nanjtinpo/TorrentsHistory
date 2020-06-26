@@ -42,15 +42,15 @@ public class AboutActivity extends AppCompatActivity {
 	// ドロワーを閉じる
         opencloseDrawer(false);
         switch (item.getItemId()) {
-          case R.id.menuhome:
+          case R.id.home:
             // MainActivityに飛ぶ
             startActivity(new Intent(getApplication(), MainActivity.class));
             finish();
             return true;
-          case R.id.menuabout:
+          case R.id.about:
             // 何もしない
             return true;
-          case R.id.menuupdate:
+          case R.id.update:
             // アップデートを確認する
             new AppUpdater(AboutActivity.this)
                 .setDisplay(Display.DIALOG)
