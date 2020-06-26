@@ -20,7 +20,6 @@ public class AboutActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_about);
-    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
 
     // TopAppBarのナビゲーションアイコンのListener
     MaterialToolbar materialToolBar = findViewById(R.id.materialtoolbar);
