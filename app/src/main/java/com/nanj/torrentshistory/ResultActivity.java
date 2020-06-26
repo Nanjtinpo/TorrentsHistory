@@ -94,9 +94,23 @@ public class ResultActivity extends AppCompatActivity {
 	      finish();
             } else {
 	      LinearLayoutCompat linearlayoutcompat = (LinearLayoutCompat)findViewById(R.id.scrollview);
+	      LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 	      String h = "";
 	      for (Element headline : tbody) {
-	        h = h + headline.text() + "\n";
+		h = h + headline.text() + "\n";
+                g = g++
+                LinearLayout linearLayout = (LinearLayout)inflater.inflate(R.layout.add_cardview, null);
+                MaterialCardView cardView = (MaterialCardView)linearLayout.findViewById(R.id.cardView);
+                TextView textBox = (TextView)linearLayout.findViewById(R.id.textBox);
+                textBox.setText("CardView" + g);
+                cardView.setTag(g);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                　public void onClick(View v) {
+                    toastMake(String.valueOf(v.getTag()) + "番目のCardViewがクリックされました");
+                  }
+                });
+                linearlayoutcompat.addView(linearLayout,g);
               }
             }
           }
