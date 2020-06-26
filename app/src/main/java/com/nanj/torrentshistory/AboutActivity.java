@@ -75,6 +75,7 @@ public class AboutActivity extends AppCompatActivity {
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
     if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
       opencloseDrawer(false);
     } else {
