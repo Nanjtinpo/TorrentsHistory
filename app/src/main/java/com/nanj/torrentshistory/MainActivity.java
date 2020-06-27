@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    //radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-    RadioGroup radioGroup = findViewById(R.id.radiogroup);
-    radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+    RadioGroup radioGroup = findViewById(R.id.radiogroup);        
+    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
       @Override
       public void onCheckedChanged(RadioGroup group, int checkedId) {
-        TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
+	TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
         switch (checkedId) {
           case R.id.selectip:
             textInputLayout.setHint("検索するIP");
