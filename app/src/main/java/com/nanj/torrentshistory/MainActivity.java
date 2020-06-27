@@ -45,10 +45,6 @@ public class MainActivity extends AppCompatActivity {
     // 「自分のIPを検索」ボタンをおすとAPIから取得したパブリックIPと一緒にResultActivityに飛ぶ
     searchStartMyIP.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        Intent intent = new Intent(getApplication(), ResultActivity.class);
-        intent.putExtra("searchMyIP", "");
-        startActivity(intent);
-        /*
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
             .url("https://api.ipify.org")
@@ -72,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
             });
           }
         });
-       */
       }
     });
 
