@@ -48,9 +48,7 @@ public class ResultActivity extends AppCompatActivity {
       temp = getIp(intent.getData().toString());
     } else {
       String temp3 = intent.getStringExtra("searchIP");
-      if (!temp3 == null) {
-        temp = intent.getStringExtra("searchIP");
-      } else {
+      if (temp3 == null) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
             .url("https://api.ipify.org")
@@ -72,6 +70,8 @@ public class ResultActivity extends AppCompatActivity {
             });
           }
         });
+      } else {
+        temp = intent.getStringExtra("searchIP");
       }
     }
     final String searchIP = temp;
