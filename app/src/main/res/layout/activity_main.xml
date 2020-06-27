@@ -34,6 +34,8 @@
             android:id="@+id/textinputlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+	    android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
             android:hint="検索するIP"
             app:endIconMode="clear_text">
             <com.google.android.material.textfield.TextInputEditText
