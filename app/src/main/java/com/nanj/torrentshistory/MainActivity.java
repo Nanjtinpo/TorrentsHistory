@@ -25,24 +25,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import android.widget.Toast;
-
 public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-    try {
-      InetAddress addr = InetAddress.getLocalHost();
-      InetAddress addr2 = InetAddress.getLocalHost();
-      Toast.makeText(MainActivity.this, "Local Host Name: " + addr.getHostName(), Toast.LENGTH_LONG).show();
-      Toast.makeText(MainActivity.this, "IP Address     : " + addr.getHostAddress(), Toast.LENGTH_LONG).show();
-    } catch (UnknownHostException e) {
-      e.printStackTrace();
-    }
 
     // ラジオボタンのListener
     RadioGroup radioGroup = findViewById(R.id.radiogroup);        
