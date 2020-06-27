@@ -51,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCheckedChanged(RadioGroup group, int i) {
 	TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
-        int id = radioGroup.getCheckedRadioButtonId();
-        switch (id) {
+        switch (i) {
             case R.id.selectip:
                 textInputLayout.setHint("検索するIP");
                 break;
