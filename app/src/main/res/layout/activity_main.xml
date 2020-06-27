@@ -43,6 +43,7 @@
               android:layout_height="wrap_content"/>
           </com.google.android.material.textfield.TextInputLayout>
           <RadioGroup
+	    android:id="@+id/radiogroup"
             android:checkedButton="@+id/selectip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
