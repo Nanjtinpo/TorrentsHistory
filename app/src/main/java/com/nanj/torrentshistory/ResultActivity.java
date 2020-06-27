@@ -40,13 +40,15 @@ public class ResultActivity extends AppCompatActivity {
 
     // Intentで送られたデータを受け取りIPを抽出する
     Intent intent = getIntent();
+    String temp = "";
     if (Intent.ACTION_SEND.equals(intent.getAction())) {
-      final String searchIP = getIp(intent.getStringExtra(Intent.EXTRA_TEXT));
+      temp = getIp(intent.getStringExtra(Intent.EXTRA_TEXT));
     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-      final String searchIP = getIp(intent.getData().toString());
+      temp = getIp(intent.getData().toString());
     } else {
-      final String searchIP = intent.getStringExtra("searchIP");
+      temp = intent.getStringExtra("searchIP");
     }
+    final String searchIP = temp;
     // IPが見つからなかったら終了する
     if (searchIP.isEmpty()) {
       toastMake("IPアドレスが見つかりませんでした");
@@ -79,10 +81,10 @@ public class ResultActivity extends AppCompatActivity {
               toastMake(searchIP + " はTorrentを使用していません");
 	      finish();
             } else {
-	      String temp = "";
+	      String temp2 = "";
 	      for (Element element : elements) {
 		// 要改善
-		temp = temp + element.text() + "\n";
+		temp2 = temp2 + element.text() + "\n";
               }
             }
           }
@@ -91,18 +93,18 @@ public class ResultActivity extends AppCompatActivity {
     });
 
     // FABのListener
-    ExtendedFloatingActionButton urlCopy = findViewById(R.id.urlcopy);
+    ExtendedFloatingActionButton copyURL = findViewById(R.id.copyurl);
     // FABを押すとURLをコピーする
-    urlCopy.setOnClickListener(new View.OnClickListener() {
+    copyURL.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         copyToClipboard(searchURL);
 	toastMake("URLをコピーしました");
       }
     });
-    ExtendedFloatingActionButton allCopy = findViewById(R.id.allcopy);
+    ExtendedFloatingActionButton copyALL = findViewById(R.id.copyall);
     // FABを押すと全てコピーする
-    allcopyfab.setOnClickListener(new View.OnClickListener() {
+    copyALL.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
 	// 要改善
