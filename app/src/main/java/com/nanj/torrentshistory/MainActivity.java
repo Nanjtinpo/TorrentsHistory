@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -28,6 +29,22 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    RadioGroup radioGroup = findViewById(R.id.radiogroup);        
+    radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(RadioGroup group, int checkedId) {
+	TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
+        switch (checkedId) {
+          case R.id.selectip:
+            textInputLayout.setHint("検索するIP");
+            break;
+          case R.id.selecthostname:
+            textInputLayout.setHint("検索するホスト名");
+            break;
+        }
+      }
+    });
 
     // ボタンのListener
     Button searchStart = findViewById(R.id.searchstart);
