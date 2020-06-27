@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
     try {
       InetAddress addr = InetAddress.getLocalHost();
       InetAddress addr2 = InetAddress.getLocalHost();
-      toastMake("Local Host Name: " + addr.getHostName());
-      toastMake("IP Address     : " + addr.getHostAddress());
+      Toast.makeText(MainActivity.this, "Local Host Name: " + addr.getHostName(), Toast.LENGTH_LONG).show();
+      Toast.makeText(MainActivity.this, "IP Address     : " + addr.getHostAddress(), Toast.LENGTH_LONG).show();
     } catch (UnknownHostException e) {
       e.printStackTrace();
     }
