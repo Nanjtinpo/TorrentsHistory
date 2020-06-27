@@ -38,7 +38,7 @@ public class ResultActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_result);
 
-    // intentで送られたデータを受け取る
+    // Intentで送られたデータを受け取りIPを抽出する
     Intent intent = getIntent();
     if (Intent.ACTION_SEND.equals(intent.getAction())) {
       final String searchIP = getIp(intent.getStringExtra(Intent.EXTRA_TEXT));
@@ -47,12 +47,13 @@ public class ResultActivity extends AppCompatActivity {
     } else {
       final String searchIP = intent.getStringExtra("searchIP");
     }
+    // IPが見つからなかったら終了する
     if (searchIP.isEmpty()) {
       toastMake("IPアドレスが見つかりませんでした");
       finish();
     }
 
-    // IPを検索する
+    // IPからTorrentの履歴を検索する
     final String searchurl = "https://iknowwhatyoudownload.com/en/peer/?ip=" + searchip;
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
@@ -163,6 +164,7 @@ public class ResultActivity extends AppCompatActivity {
     }
   }
 
+  // 文字からIPを抽出する
   public String getIp(String searchText) {
     String ipRegExp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
     Pattern pattern = Pattern.compile(ipRegExp);
@@ -174,18 +176,18 @@ public class ResultActivity extends AppCompatActivity {
     }
   }
 
-  // クリップボードにコピー
-  public void copyToClipboard(String copytext) {
+  // クリップボードにコピーする
+  public void copyToClipboard(String copyText) {
     ClipboardManager clipboardManager =
                 (ClipboardManager) ResultActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
       if (null == clipboardManager) {
         return;
       }
-    clipboardManager.setPrimaryClip(ClipData.newPlainText("", copytext));
+    clipboardManager.setPrimaryClip(ClipData.newPlainText("", copyText));
   }
 
   // トーストを出す
-  public void toastMake(String toasttext) {
-    Toast.makeText(ResultActivity.this, toasttext, Toast.LENGTH_LONG).show();
+  public void toastMake(String toastText) {
+    Toast.makeText(ResultActivity.this, toastText, Toast.LENGTH_LONG).show();
   }
 }
