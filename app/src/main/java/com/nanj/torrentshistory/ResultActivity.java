@@ -47,34 +47,7 @@ public class ResultActivity extends AppCompatActivity {
     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
       temp = getIp(intent.getData().toString());
     } else {
-      String temp3 = intent.getStringExtra("searchIP");
-      if (temp3 == null) {
-        final String temp4 = "";
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-            .url("https://api.ipify.org")
-            .build();
-        client.newCall(request).enqueue(new Callback() {
-          @Override
-          public void onFailure(Call call, IOException e) {}
-          @Override
-          public void onResponse(Call call, Response response) throws IOException {
-            if(!response.isSuccessful()){
-              throw new IOException("Error : " + response);
-            }
-            final String myPublicIP = response.body().string();
-            runOnUiThread(new Runnable() {
-              @Override
-              public void run() {
-                temp4 = myPublicIP;
-              }
-            });
-          }
-        });
-        temp = temp4;
-      } else {
-        temp = intent.getStringExtra("searchIP");
-      }
+      temp = intent.getStringExtra("searchIP");
     }
     final String searchIP = temp;
     // IPが見つからなかったら終了する
