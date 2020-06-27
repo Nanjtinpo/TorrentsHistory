@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    // ラジオボタンのListener
     RadioGroup radioGroup = findViewById(R.id.radiogroup);        
     radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
       @Override
@@ -38,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
 	TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
         switch (checkedId) {
           case R.id.selectip:
+	    // 検索する対象をIPにする
             textInputLayout.setHint("検索するIP");
             break;
           case R.id.selecthostname:
+	    // 検索する対象をホスト名にする
             textInputLayout.setHint("検索するホスト名");
             break;
         }
