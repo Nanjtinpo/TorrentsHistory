@@ -30,11 +30,12 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-/*
-    RadioGroup radioGroup = findViewById(R.id.radiogroup);        
-    radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+    //radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+    RadioGroup radioGroup = findViewById(R.id.radiogroup);
+    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+      @Override
       public void onCheckedChanged(RadioGroup group, int checkedId) {
-	TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
+        TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
         switch (checkedId) {
           case R.id.selectip:
             textInputLayout.setHint("検索するIP");
@@ -44,22 +45,6 @@ public class MainActivity extends AppCompatActivity {
             break;
         }
       }
-    });
-*/
-    RadioGroup radioGroup = findViewById(R.id.radiogroup);
-    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-    @Override
-    public void onCheckedChanged(RadioGroup group, int i) {
-	TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
-        switch (i) {
-            case R.id.selectip:
-                textInputLayout.setHint("検索するIP");
-                break;
-            case R.id.selecthostname:
-                textInputLayout.setHint("検索するホスト名");
-                break;
-            }
-        }
     });
 
     // ボタンのListener
