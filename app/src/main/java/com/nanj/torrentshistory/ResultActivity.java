@@ -54,10 +54,10 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     // IPからTorrentの履歴を検索する
-    final String searchurl = "https://iknowwhatyoudownload.com/en/peer/?ip=" + searchip;
+    final String searchURL = "https://iknowwhatyoudownload.com/en/peer/?ip=" + searchIP;
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
-        .url(searchurl)
+        .url(searchURL)
         .build();
     client.newCall(request).enqueue(new Callback() {
       @Override
@@ -71,15 +71,18 @@ public class ResultActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
           @Override
           public void run() {
-            Document doc = Jsoup.parse(html);
-            Elements tbody = doc.select("tbody > tr > td");
-            if (tbody.text().isEmpty()) {
-              toastMake(searchip + " はTorrentを使用していません");
+	    // 取得したHTMLから要素を抽出する
+            Document document = Jsoup.parse(html);
+            Elements elements = document.select("tbody > tr > td");
+	    // 抽出できなければ終了する
+            if (elements.text().isEmpty()) {
+              toastMake(searchIP + " はTorrentを使用していません");
 	      finish();
             } else {
-	      String h = "";
-	      for (Element headline : tbody) {
-		h = h + headline.text() + "\n";
+	      String temp = "";
+	      for (Element element : elements) {
+		// 要改善
+		temp = temp + element.text() + "\n";
               }
             }
           }
@@ -88,51 +91,58 @@ public class ResultActivity extends AppCompatActivity {
     });
 
     // FABのListener
-    ExtendedFloatingActionButton urlcopyfab = findViewById(R.id.urlcopy);
-    urlcopyfab.setOnClickListener(new View.OnClickListener() {
+    ExtendedFloatingActionButton urlCopy = findViewById(R.id.urlcopy);
+    // FABを押すとURLをコピーする
+    urlCopy.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View view) {
-        copyToClipboard(searchurl);
+      public void onClick(View v) {
+        copyToClipboard(searchURL);
 	toastMake("URLをコピーしました");
       }
     });
-    ExtendedFloatingActionButton allcopyfab = findViewById(R.id.allcopy);
+    ExtendedFloatingActionButton allCopy = findViewById(R.id.allcopy);
+    // FABを押すと全てコピーする
     allcopyfab.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(View v) {
+	// 要改善
         copyToClipboard("all");
         toastMake("全てコピーしました");
       }
     });
 
-    // TopAppBarのメニューアイコンのListener
-    MaterialToolbar materialtoolbar = (MaterialToolbar)findViewById(R.id.materialtoolbar);
-    materialtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
+    // TopAppBarのナビゲーションアイコンのListener
+    MaterialToolbar materialToolBar = findViewById(R.id.materialtoolbar);
+    // ナビゲーションアイコンをクリックするとドロワーを開く
+    materialToolBar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawerlayout);
-        drawer.openDrawer(GravityCompat.START);
+        opencloseDrawer(true);
       }
     });
 
     // ナビゲーションドロワーのListener
-    NavigationView navigationView = (NavigationView)findViewById(R.id.navigationview);
+    NavigationView navigationView = findViewById(R.id.navigationview);
+    // ドロワーの中の項目をクリックすると処理を実行する
     navigationView.setNavigationItemSelectedListener(
     new NavigationView.OnNavigationItemSelectedListener() {
       @Override
       public boolean onNavigationItemSelected(MenuItem item) {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawerlayout);
-        drawer.closeDrawer(Gravity.LEFT);
+	// ドロワーを閉じる
+        opencloseDrawer(false);
         switch (item.getItemId()) {
           case R.id.home:
+	    // MainActivityに飛ぶ
             startActivity(new Intent(getApplication(), MainActivity.class));
             finish();
             return true;
           case R.id.about:
+	    // AboutActivityに飛ぶ
             startActivity(new Intent(getApplication(), AboutActivity.class));
             finish();
             return true;
           case R.id.update:
+	     // アップデートを確認する
             new AppUpdater(ResultActivity.this)
                 .setDisplay(Display.DIALOG)
                 .setUpdateFrom(UpdateFrom.GITHUB)
