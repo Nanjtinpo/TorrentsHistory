@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,7 +14,6 @@ import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import okhttp3.Call;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     // ボタンのListener
-    MaterialButton searchStart = findViewById(R.id.searchstart);
+    Button searchStart = findViewById(R.id.searchstart);
     // 「検索」ボタンをおすとTextInputLayoutに入れたIPと一緒にResultActivityに飛ぶ
     searchStart.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
       }
     });
-    MaterialButton searchStartMyIP = findViewById(R.id.searchstartmyip);
+    Button searchStartMyIP = findViewById(R.id.searchstartmyip);
     // 「自分のIPを検索」ボタンをおすとAPIから取得したパブリックIPと一緒にResultActivityに飛ぶ
     searchStartMyIP.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
