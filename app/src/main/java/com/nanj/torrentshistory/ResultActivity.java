@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
+import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -85,6 +86,8 @@ public class ResultActivity extends AppCompatActivity {
 	      for (Element element : elements) {
 		// 要改善
 		temp2 = temp2 + element.text() + "\n";
+	        ProgressBar progressBar = findViewById(R.id.progressbar);
+	        progressBar.setVisibility(View.GONE);
               }
             }
           }
