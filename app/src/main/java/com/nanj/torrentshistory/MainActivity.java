@@ -25,11 +25,23 @@ import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    try {
+      InetAddress addr = InetAddress.getLocalHost();
+      InetAddress addr2 = InetAddress.getLocalHost();
+      toastMake("Local Host Name: " + addr.getHostName());
+      toastMake("IP Address     : " + addr.getHostAddress());
+    } catch (UnknownHostException e) {
+      e.printStackTrace();
+    }
 
     // ラジオボタンのListener
     RadioGroup radioGroup = findViewById(R.id.radiogroup);        
