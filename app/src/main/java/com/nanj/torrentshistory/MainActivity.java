@@ -27,6 +27,7 @@ import java.io.IOException;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
   @Override
