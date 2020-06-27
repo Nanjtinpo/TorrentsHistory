@@ -37,7 +37,6 @@
               android:layout_height="wrap_content"
               android:layout_width="wrap_content"
               android:layout_gravity="center"
-              android:gravity="center"
               style="?android:attr/progressBarStyleLarge"/>
           </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
