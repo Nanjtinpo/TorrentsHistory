@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 */
-    final RadioGroup radiogroup= (RadioGroup) findViewById(R.id.radiogroup);
-    radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    RadioGroup radioGroup = findViewById(R.id.radiogroup);
+    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
     @Override
-    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+    public void onCheckedChanged(RadioGroup group, int i) {
 	TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
-        int id = radiogroup.getCheckedRadioButtonId();
+        int id = radioGroup.getCheckedRadioButtonId();
         switch (id) {
             case R.id.selectip:
                 textInputLayout.setHint("検索するIP");
