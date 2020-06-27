@@ -153,15 +153,14 @@ public class ResultActivity extends AppCompatActivity {
     });
   }
 
-  // 戻るキーを押すとドロワーが閉じる
-  @Override
-  public void onBackPressed() {
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerlayout);
-    if (drawer.isDrawerOpen(GravityCompat.START)) {
-      drawer.closeDrawer(Gravity.LEFT);
-    } else {
-      super.onBackPressed();
-    }
+  // クリップボードにコピーする
+  public void copyToClipboard(String copyText) {
+    ClipboardManager clipboardManager =
+                (ClipboardManager) ResultActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
+      if (null == clipboardManager) {
+        return;
+      }
+    clipboardManager.setPrimaryClip(ClipData.newPlainText("", copyText));
   }
 
   // 文字からIPを抽出する
@@ -176,14 +175,25 @@ public class ResultActivity extends AppCompatActivity {
     }
   }
 
-  // クリップボードにコピーする
-  public void copyToClipboard(String copyText) {
-    ClipboardManager clipboardManager =
-                (ClipboardManager) ResultActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
-      if (null == clipboardManager) {
-        return;
-      }
-    clipboardManager.setPrimaryClip(ClipData.newPlainText("", copyText));
+  // 戻るキーを押すとドロワーが閉じる
+  @Override
+  public void onBackPressed() {
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+      opencloseDrawer(false);
+    } else {
+      super.onBackPressed();
+    }
+  }
+
+  // ドロワーを開けたり閉じたりする
+  public void opencloseDrawer(boolean openclose) {
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+    if (openclose) {
+      drawerLayout.openDrawer(GravityCompat.START);
+    } else {
+      drawerLayout.closeDrawer(Gravity.LEFT);
+    }
   }
 
   // トーストを出す
