@@ -30,11 +30,14 @@
             android:id="@+id/scrollcontents"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical">
             <ProgressBar
-              android:layout_height="match_parent"
-              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:layout_gravity="center"
+              android:gravity="center"
               style="?android:attr/progressBarStyleLarge"/>
           </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
