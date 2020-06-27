@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     //radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
     RadioGroup radioGroup = findViewById(R.id.radiogroup);
-    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
       @Override
       public void onCheckedChanged(RadioGroup group, int checkedId) {
         TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
