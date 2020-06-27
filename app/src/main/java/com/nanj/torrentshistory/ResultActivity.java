@@ -49,6 +49,7 @@ public class ResultActivity extends AppCompatActivity {
     } else {
       String temp3 = intent.getStringExtra("searchIP");
       if (temp3 == null) {
+        final String temp4 = "";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
             .url("https://api.ipify.org")
@@ -65,11 +66,12 @@ public class ResultActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
               @Override
               public void run() {
-                temp = myPublicIP;
+                temp4 = myPublicIP;
               }
             });
           }
         });
+        temp = temp4;
       } else {
         temp = intent.getStringExtra("searchIP");
       }
