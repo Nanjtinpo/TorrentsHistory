@@ -40,31 +40,17 @@ public class ResultActivity extends AppCompatActivity {
 
     // intentで送られたデータを受け取る
     Intent intent = getIntent();
-    String temp = "";
     if (Intent.ACTION_SEND.equals(intent.getAction())) {
-      String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
-      String ipregexp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
-      Pattern p = Pattern.compile(ipregexp);
-      Matcher m = p.matcher(sharedText);
-      if (m.find()){
-        temp = m.group();
-      }
+      final String searchIP = getIp(intent.getStringExtra(Intent.EXTRA_TEXT));
     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-      String searchText = intent.getData().toString();
-      String ipregexp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
-      Pattern p = Pattern.compile(ipregexp);
-      Matcher m = p.matcher(searchText);
-      if (m.find()){
-        temp = m.group();
-      }
+      final String searchIP = getIp(intent.getData().toString());
     } else {
-      temp = intent.getStringExtra("searchIP");
+      final String searchIP = intent.getStringExtra("searchIP");
     }
-    if (temp.isEmpty()) {
+    if (searchIP.isEmpty()) {
       toastMake("IPアドレスが見つかりませんでした");
       finish();
     }
-    final String searchip = temp;
 
     // IPを検索する
     final String searchurl = "https://iknowwhatyoudownload.com/en/peer/?ip=" + searchip;
@@ -174,6 +160,17 @@ public class ResultActivity extends AppCompatActivity {
       drawer.closeDrawer(Gravity.LEFT);
     } else {
       super.onBackPressed();
+    }
+  }
+
+  public String getIp(String searchText) {
+    String ipRegExp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
+    Pattern pattern = Pattern.compile(ipRegExp);
+    Matcher matcher = pattern.matcher(searchText);
+    if (matcher.find()){
+      return matcher.group();
+    } else {
+      return "";
     }
   }
 
