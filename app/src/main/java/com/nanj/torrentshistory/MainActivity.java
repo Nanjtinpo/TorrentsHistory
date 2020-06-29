@@ -66,7 +66,14 @@ public class MainActivity extends AppCompatActivity {
           searchIP = textInputLayout.getEditText().getText().toString();
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
-	  searchIP = searchHostName;
+	  OkHttpClient bootstrapClient = new OkHttpClient();
+          Dns google = new DnsOverHttps.Builder().client(bootstrapClient)
+              .url(HttpUrl.get("https://dns.google.com/experimental"))
+              .build();
+          OkHttpClient client = new OkHttpClient.Builder().dns(google).build();
+          Response result =
+          client.newCall(new Request.Builder().url("https://google.com/robots.txt").build()).execute();
+	  searchIP = result.body().string();
         }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
         intent.putExtra("searchIP", searchIP);
