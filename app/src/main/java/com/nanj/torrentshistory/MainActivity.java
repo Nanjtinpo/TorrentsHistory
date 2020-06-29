@@ -82,12 +82,15 @@ public class MainActivity extends AppCompatActivity {
               if(!response.isSuccessful()){
                 throw new IOException("Error : " + response);
               }
-              final String responseJSON = response.body().string();
+              String responseJSON = response.body().string();
+	      ObjectMapper objectMapper = new ObjectMapper();
+	      JsonNode jsonNode = objectMapper.readTree(responseJSON);
+	      String responseIP = jsonNode.get("Answer").get(0).get("name").asText();
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
 		  Intent intent = new Intent(getApplication(), ResultActivity.class);
-                  intent.putExtra("searchIP", responseJSON);
+                  intent.putExtra("searchIP", responseIP);
                   startActivity(intent);
                 }
               });
