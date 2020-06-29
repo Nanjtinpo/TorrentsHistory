@@ -20,9 +20,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.Dns;
-import okhttp3.DnsOverHttps;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -69,14 +66,7 @@ public class MainActivity extends AppCompatActivity {
           searchIP = textInputLayout.getEditText().getText().toString();
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
-	  OkHttpClient bootstrapClient = new OkHttpClient();
-          Dns google = new DnsOverHttps.Builder().client(bootstrapClient)
-              .url(HttpUrl.get("https://dns.google.com/experimental"))
-              .build();
-          OkHttpClient client = new OkHttpClient.Builder().dns(google).build();
-          Response result =
-          client.newCall(new Request.Builder().url("https://google.com/robots.txt").build()).execute();
-	  searchIP = result.body().string();
+	  searchIP = searchHostName;
         }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
         intent.putExtra("searchIP", searchIP);
