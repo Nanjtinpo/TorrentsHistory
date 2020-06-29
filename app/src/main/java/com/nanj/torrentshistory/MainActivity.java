@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
           searchIP = textInputLayout.getEditText().getText().toString();
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
-	  List<DnsEntry> hostips= new DnsService().lookup(searchHostName, Type.A);
+	  List<DnsEntry> hostips= new DnsService().lookup("google.com", Type.A);
 	  searchIP = hostips.toString();
         }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
