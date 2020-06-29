@@ -18,6 +18,9 @@ import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
+import com.jdig.model.DnsEntry;
+import com.jdig.model.Type;
+import com.jdig.service.DnsService;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -66,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
           searchIP = textInputLayout.getEditText().getText().toString();
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
-	  searchIP = searchHostName;
+	  List<DnsEntry> hostips= new DnsService().lookup(searchHostName, Type.A);
+	  searchIP = hostips.toString();
         }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
         intent.putExtra("searchIP", searchIP);
