@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
           searchIP = textInputLayout.getEditText().getText().toString();
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
-	  List<DnsEntry> entries = new ArrayList<DnsEntry>();
+	  List<DnsEntry> hostips = new ArrayList<DnsEntry>();
 	  try {
-	    entries = new DnsService().lookup(searchHostName, Type.A);
+	    hostips = new DnsService().lookup(searchHostName, Type.A);
 	  } catch (NamingException e) {
 	    e.printStackTrace();
 	  }
