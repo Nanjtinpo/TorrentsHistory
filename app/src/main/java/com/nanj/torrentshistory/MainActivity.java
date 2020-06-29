@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
 	  OkHttpClient client = new OkHttpClient();
           Request request = new Request.Builder()
-            .url("https://dns.google/resolve?name=" + searchHostName + "&type=A")
+            .url("https://cloudflare-dns.com/dns-query?name=" + searchHostName + "&type=A")
+	    .addHeader("accept", "application/dns-json")
             .build();
           client.newCall(request).enqueue(new Callback() {
             @Override
