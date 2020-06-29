@@ -29,6 +29,7 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.naming.NamingException;
 
 public class MainActivity extends AppCompatActivity {
   // フィールド変数
