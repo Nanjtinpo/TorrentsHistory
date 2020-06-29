@@ -28,7 +28,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
   // フィールド変数
   DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
-
+  boolean ipSearch = true;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -43,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
         switch (checkedId) {
           case R.id.selectip:
 	    // 検索する対象をIPにする
+	    ipSearch = true;
             textInputLayout.setHint("検索するIP");
             break;
           case R.id.selecthostname:
 	    // 検索する対象をホスト名にする
+            ipSearch = false;
             textInputLayout.setHint("検索するホスト名");
             break;
         }
@@ -59,7 +61,12 @@ public class MainActivity extends AppCompatActivity {
     searchStart.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
-        String searchIP = textInputLayout.getEditText().getText().toString();
+        if (ipSearch) {
+          String searchIP = textInputLayout.getEditText().getText().toString();
+        } else {
+	  String searchHostName = textInputLayout.getEditText().getText().toString();
+	  String searchIP = searchHostName;
+        }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
         intent.putExtra("searchIP", searchIP);
         startActivity(intent);
