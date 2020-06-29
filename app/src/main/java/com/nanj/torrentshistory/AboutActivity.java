@@ -16,6 +16,9 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
 public class AboutActivity extends AppCompatActivity {
+  // フィールド変数
+  DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -74,7 +77,6 @@ public class AboutActivity extends AppCompatActivity {
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
-    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
     if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
       opencloseDrawer(false);
     } else {
@@ -84,7 +86,6 @@ public class AboutActivity extends AppCompatActivity {
 
   // ドロワーを開けたり閉じたりする
   public void opencloseDrawer(boolean openclose) {
-    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
     if (openclose) {
       drawerLayout.openDrawer(GravityCompat.START);
     } else {
