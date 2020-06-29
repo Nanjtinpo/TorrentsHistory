@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
               String responseJSON = response.body().string();
 	      ObjectMapper objectMapper = new ObjectMapper();
 	      JsonNode jsonNode = objectMapper.readTree(responseJSON);
-	      final String responseIP = jsonNode.get("Answer").get(0).get("name").asText();
+	      final String responseIP = jsonNode.get("Answer").get(0).get("data").asText();
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
