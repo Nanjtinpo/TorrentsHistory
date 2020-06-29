@@ -26,6 +26,9 @@ import okhttp3.Response;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
+  // フィールド変数
+  DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -145,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
-    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
     if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
       opencloseDrawer(false);
     } else {
@@ -155,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
 
   // ドロワーを開けたり閉じたりする
   public void opencloseDrawer(boolean openclose) {
-    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
     if (openclose) {
       drawerLayout.openDrawer(GravityCompat.START);
     } else {
