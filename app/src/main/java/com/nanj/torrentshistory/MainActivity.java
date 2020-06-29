@@ -68,9 +68,10 @@ public class MainActivity extends AppCompatActivity {
           startActivity(intent);
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
+	  String searchHost = searchHostName.replaceAll("https?://", "")
 	  OkHttpClient client = new OkHttpClient();
           Request request = new Request.Builder()
-            .url("https://cloudflare-dns.com/dns-query?name=" + searchHostName + "&type=A")
+            .url("https://cloudflare-dns.com/dns-query?name=" + searchHost + "&type=A")
 	    .addHeader("accept", "application/dns-json")
             .build();
           client.newCall(request).enqueue(new Callback() {
