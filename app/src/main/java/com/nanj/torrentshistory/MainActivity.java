@@ -66,6 +66,29 @@ public class MainActivity extends AppCompatActivity {
           searchIP = textInputLayout.getEditText().getText().toString();
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
+	  OkHttpClient dnsapiclient = new OkHttpClient();
+          Request dnsapirequest = new Request.Builder()
+              .url(searchHostName)
+              .build();
+          dnsapiclient.newCall(dnsapirequest).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {}
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+              if(!response.isSuccessful()){
+                throw new IOException("Error : " + response);
+              }
+              final String resolveIP = response.body().string();
+              runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                  Intent intent = new Intent(getApplication(), ResultActivity.class);
+                  intent.putExtra("searchIP", resolveIP);
+                  startActivity(intent);
+                }
+              });
+            }
+          });
 	  searchIP = searchHostName;
         }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
