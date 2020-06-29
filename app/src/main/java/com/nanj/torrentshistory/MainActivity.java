@@ -61,9 +61,11 @@ public class MainActivity extends AppCompatActivity {
     searchStart.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
-        String searchIP = "";
         if (ipSearch) {
-          searchIP = textInputLayout.getEditText().getText().toString();
+          String searchIP = textInputLayout.getEditText().getText().toString();
+	  Intent intent = new Intent(getApplication(), ResultActivity.class);
+          intent.putExtra("searchIP", searchIP);
+          startActivity(intent);
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
 	  OkHttpClient client = new OkHttpClient();
@@ -82,15 +84,14 @@ public class MainActivity extends AppCompatActivity {
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                  searchIP = responseJSON;
+		  Intent intent = new Intent(getApplication(), ResultActivity.class);
+                  intent.putExtra("searchIP", responseJSON);
+                  startActivity(intent);
                 }
               });
             }
           });
         }
-        Intent intent = new Intent(getApplication(), ResultActivity.class);
-        intent.putExtra("searchIP", searchIP);
-        startActivity(intent);
       }
     });
     Button searchStartMyIP = findViewById(R.id.searchstartmyip);
