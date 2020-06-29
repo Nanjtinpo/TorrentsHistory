@@ -29,7 +29,6 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.naming.NamingException;
 
 public class MainActivity extends AppCompatActivity {
   // フィールド変数
@@ -73,11 +72,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
 	  List<DnsEntry> hostips = new ArrayList<DnsEntry>();
-	  try {
-	    hostips = new DnsService().lookup(searchHostName, Type.A);
-	  } catch (NamingException e) {
-	    e.printStackTrace();
-	  }
+	  hostips = new DnsService().lookup(searchHostName, Type.A);
 	  searchIP = hostips.toString();
         }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
