@@ -18,18 +18,12 @@ import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
-import com.jdig.model.DnsEntry;
-import com.jdig.model.Type;
-import com.jdig.service.DnsService;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import javax.naming.NamingException;
 
 public class MainActivity extends AppCompatActivity {
   // フィールド変数
@@ -72,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
           searchIP = textInputLayout.getEditText().getText().toString();
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
-	  List<DnsEntry> hostips = new ArrayList<DnsEntry>();
-	  hostips = new DnsService().lookup(searchHostName, Type.A);
-	  searchIP = hostips.toString();
+	  searchIP = searchHostName;
         }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
         intent.putExtra("searchIP", searchIP);
