@@ -153,11 +153,10 @@ public class MainActivity extends AppCompatActivity {
     });
   }
 
-  DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
-
   // 戻るキーを押すとドロワーが閉じる
   @Override
   public void onBackPressed() {
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
     if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
       opencloseDrawer(false);
     } else {
@@ -167,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
   // ドロワーを開けたり閉じたりする
   public void opencloseDrawer(boolean openclose) {
+    DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
     if (openclose) {
       drawerLayout.openDrawer(GravityCompat.START);
     } else {
