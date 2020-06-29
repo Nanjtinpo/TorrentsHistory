@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
   // フィールド変数
   DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
   boolean ipSearch = true;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
