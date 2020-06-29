@@ -27,7 +27,6 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
   // フィールド変数
-  DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
   boolean ipSearch = true;
 
   @Override
@@ -153,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
       }
     });
   }
+
+  DrawerLayout drawerLayout = findViewById(R.id.drawerlayout);
 
   // 戻るキーを押すとドロワーが閉じる
   @Override
