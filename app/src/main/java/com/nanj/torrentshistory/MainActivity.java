@@ -62,11 +62,12 @@ public class MainActivity extends AppCompatActivity {
     searchStart.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
+        String searchIP = "";
         if (ipSearch) {
-          String searchIP = textInputLayout.getEditText().getText().toString();
+          searchIP = textInputLayout.getEditText().getText().toString();
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
-	  String searchIP = searchHostName;
+	  searchIP = searchHostName;
         }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
         intent.putExtra("searchIP", searchIP);
