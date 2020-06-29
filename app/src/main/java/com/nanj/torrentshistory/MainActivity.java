@@ -66,7 +66,27 @@ public class MainActivity extends AppCompatActivity {
           searchIP = textInputLayout.getEditText().getText().toString();
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
-	  searchIP = searchHostName;
+	  OkHttpClient client = new OkHttpClient();
+          Request request = new Request.Builder()
+            .url(searchHostName)
+            .build();
+          client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {}
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+              if(!response.isSuccessful()){
+                throw new IOException("Error : " + response);
+              }
+              final String responseJSON = response.body().string();
+              runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                  searchIP = responseJSON;
+                }
+              });
+            }
+          });
         }
         Intent intent = new Intent(getApplication(), ResultActivity.class);
         intent.putExtra("searchIP", searchIP);
