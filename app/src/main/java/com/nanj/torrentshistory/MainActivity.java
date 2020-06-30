@@ -87,12 +87,17 @@ public class MainActivity extends AppCompatActivity {
               String responseJSON = response.body().string();
 	      ObjectMapper objectMapper = new ObjectMapper();
 	      JsonNode jsonNode = objectMapper.readTree(responseJSON);
-	      final String responseIP = jsonNode.get("Answer").get(0).get("data").asText();
+	      String responseIP = jsonNode.get("Answer").get(0).get("data").asText();
+	      if (responseIP.contains(", ");) {
+                Toast.makeText(MainActivity.this, "このホストには複数のIPが含まれています。複数のIPがあるホスト名には対応していません", Toast.LENGTH_LONG).show();
+		finish();
+	      }
+	      final String searchIP = 
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
 		  Intent intent = new Intent(getApplication(), ResultActivity.class);
-                  intent.putExtra("searchIP", responseIP);
+                  intent.putExtra("searchIP", searchIP);
                   startActivity(intent);
                 }
               });
