@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 	      ObjectMapper objectMapper = new ObjectMapper();
 	      JsonNode jsonNode = objectMapper.readTree(responseJSON);
 	      String responseIP = jsonNode.get("Answer").get(0).get("data").asText();
-	      if (responseIP.contains(", ");) {
+	      if (responseIP.contains(", ")) {
                 Toast.makeText(MainActivity.this, "このホストには複数のIPが含まれています。複数のIPがあるホスト名には対応していません", Toast.LENGTH_LONG).show();
 	        return;
 	      }
