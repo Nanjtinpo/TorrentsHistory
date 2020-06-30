@@ -12,6 +12,8 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
@@ -61,16 +63,47 @@ public class MainActivity extends AppCompatActivity {
     searchStart.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
-        String searchIP = "";
         if (ipSearch) {
-          searchIP = textInputLayout.getEditText().getText().toString();
+          String searchIP = textInputLayout.getEditText().getText().toString();
+	  Intent intent = new Intent(getApplication(), ResultActivity.class);
+          intent.putExtra("searchIP", searchIP);
+          startActivity(intent);
         } else {
 	  String searchHostName = textInputLayout.getEditText().getText().toString();
-	  searchIP = searchHostName;
+	  String searchHost = searchHostName.replaceAll("https?://", "");
+	  OkHttpClient client = new OkHttpClient();
+          Request request = new Request.Builder()
+            .url("https://cloudflare-dns.com/dns-query?name=" + searchHost + "&type=A")
+	    .addHeader("accept", "application/dns-json")
+            .build();
+          client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {}
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+              if(!response.isSuccessful()){
+                throw new IOException("Error : " + response);
+              }
+              String responseJSON = response.body().string();
+	      ObjectMapper objectMapper = new ObjectMapper();
+	      JsonNode jsonNode = objectMapper.readTree(responseJSON);
+	      String responseIP = jsonNode.get("Answer").get(0).get("data").asText();
+	      if (responseIP.contains(", ");) {
+                Toast.makeText(MainActivity.this, "このホストには複数のIPが含まれています。複数のIPがあるホスト名には対応していません", Toast.LENGTH_LONG).show();
+		finish();
+	      }
+	      final String searchIP = 
+              runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+		  Intent intent = new Intent(getApplication(), ResultActivity.class);
+                  intent.putExtra("searchIP", searchIP);
+                  startActivity(intent);
+                }
+              });
+            }
+          });
         }
-        Intent intent = new Intent(getApplication(), ResultActivity.class);
-        intent.putExtra("searchIP", searchIP);
-        startActivity(intent);
       }
     });
     Button searchStartMyIP = findViewById(R.id.searchstartmyip);
