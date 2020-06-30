@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -88,12 +87,8 @@ public class MainActivity extends AppCompatActivity {
               String responseJSON = response.body().string();
 	      ObjectMapper objectMapper = new ObjectMapper();
 	      JsonNode jsonNode = objectMapper.readTree(responseJSON);
-	      String responseIP = jsonNode.get("Answer").get(0).get("data").asText();
-	      if (responseIP.contains(", ")) {
-                Toast.makeText(MainActivity.this, "このホストには複数のIPが含まれています。複数のIPがあるホスト名には対応していません", Toast.LENGTH_LONG).show();
-	        return;
-	      }
-	      final String searchIP = responseIP;
+	      final String responseIP = jsonNode.get("Answer").get(0).get("data").asText(;
+	      // 要改善								 
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
