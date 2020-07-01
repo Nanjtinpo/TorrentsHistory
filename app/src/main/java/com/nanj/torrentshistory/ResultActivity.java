@@ -90,7 +90,7 @@ public class ResultActivity extends AppCompatActivity {
 	      String result = "";
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
-	      for (int i = 0; i < elements.size() / 5; i += 5) {
+	      for (int i = 0; i < elements.size(); i += 5) {
 		result = "開始時間(UTC): " + elements.get(i).text(i) + "\n";
 		result = result + "終了時間(UTC): " + elements.get(i + 1).text() + "\n";
 		result = result + "カテゴリ: " + elements.get(i + 2).text() + "\n";
