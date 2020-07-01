@@ -9,8 +9,9 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.view.GravityCompat;
@@ -85,7 +86,7 @@ public class ResultActivity extends AppCompatActivity {
 	      finish();
             } else {
 	      String result = "";
-	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)this.findViewById(R.id.scrollcontents);
+	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      scrollContents.removeAllViews();
 	      for (Element element : elements) {
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)inflater.inflate(R.layout.add_cardview, null);
