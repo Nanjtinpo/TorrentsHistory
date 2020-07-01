@@ -88,8 +88,8 @@ public class ResultActivity extends AppCompatActivity {
 	      String result = "";
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
-	      LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 	      for (Element element : elements) {
+		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
 		result = result + element.text() + "\n";
               }
