@@ -71,26 +71,26 @@ public class ResultActivity extends AppCompatActivity {
         if(!response.isSuccessful()){
           throw new IOException("Error : " + response);
         }
-        final String html = response.body().string();
+        final String responseHTML = response.body().string();
         runOnUiThread(new Runnable() {
           @Override
           public void run() {
 	    // 取得したHTMLから要素を抽出する
-            Document document = Jsoup.parse(html);
+            Document document = Jsoup.parse(responseHTML);
             Elements elements = document.select("tbody > tr > td");
 	    // 抽出できなければ終了する
             if (elements.text().isEmpty()) {
               toastMake(searchIP + " はTorrentを使用していません");
 	      finish();
             } else {
-	      String temp = "";
+	      String result = "";
 	      for (Element element : elements) {
-		// 要改善
-		temp = temp + element.text() + "\n";
+		result = result + element.text() + "\n";
               }
+	      // 抽出結果を表示する
 	      ProgressBar progressBar = findViewById(R.id.progressbar);
 	      progressBar.setVisibility(View.GONE);
-	      toastMake(temp);
+	      toastMake(result);
             }
           }
         });
@@ -112,7 +112,6 @@ public class ResultActivity extends AppCompatActivity {
     copyALL.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-	// 要改善
         copyToClipboard("all");
         toastMake("全てコピーしました");
       }
