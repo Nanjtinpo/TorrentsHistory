@@ -83,13 +83,14 @@ public class ResultActivity extends AppCompatActivity {
               toastMake(searchIP + " はTorrentを使用していません");
 	      finish();
             } else {
-	      String temp2 = "";
+	      String temp = "";
 	      for (Element element : elements) {
 		// 要改善
-		temp2 = temp2 + element.text() + "\n";
-	        ProgressBar progressBar = findViewById(R.id.progressbar);
-	        progressBar.setVisibility(View.GONE);
+		temp = temp + element.text() + "\n";
               }
+	      ProgressBar progressBar = findViewById(R.id.progressbar);
+	      progressBar.setVisibility(View.GONE);
+	      toastMake(temp);
             }
           }
         });
@@ -171,11 +172,10 @@ public class ResultActivity extends AppCompatActivity {
 
   // クリップボードにコピーする
   public void copyToClipboard(String copyText) {
-    ClipboardManager clipboardManager =
-                (ClipboardManager) ResultActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
-      if (null == clipboardManager) {
-        return;
-      }
+    ClipboardManager clipboardManager = (ClipboardManager)ResultActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
+    if (clipboardManager == null) {
+      return;
+    }
     clipboardManager.setPrimaryClip(ClipData.newPlainText("", copyText));
   }
 
