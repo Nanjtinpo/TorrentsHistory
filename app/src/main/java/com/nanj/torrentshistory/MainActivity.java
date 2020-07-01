@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
               }
 	      String responseJSON = response.body().string();
 	      ObjectMapper objectMapper = new ObjectMapper();
-              Answer answer = objectMapper.readValue(responseJSON, Answer.class);
-	      final String searchIP = answer.data;
-	      // 要改善								 
+              ResponseDTO responseDTO = objectMapper.readValue(responseJSON, ResponseDTO.class);
+	      final String searchIP = responseDTO.data;
+	      // 要改善
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
