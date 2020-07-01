@@ -90,16 +90,17 @@ public class ResultActivity extends AppCompatActivity {
 	      String result = "";
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
-	      for (int i = 1; i < elements.size(); i++) {
-		result = "開始時間(UTC): " + elements.get(0).text() + "\n";
-		result = result + "終了時間(UTC): " + elements.get(1).text() + "\n";
-		result = result + "カテゴリ: " + elements.get(2).text() + "\n";
-		result = result + "タイトル: " + elements.get(3).text() + "\n";
-		result = result + "サイズ: " + elements.get(4).text();
+	      for (int i = 0; i < elements.size() / 5; i += 5) {
+		result = "開始時間(UTC): " + elements.get(i).text(i) + "\n";
+		result = result + "終了時間(UTC): " + elements.get(i + 1).text() + "\n";
+		result = result + "カテゴリ: " + elements.get(i + 2).text() + "\n";
+		result = result + "タイトル: " + elements.get(i + 3).text() + "\n";
+		result = result + "サイズ: " + elements.get(i + 4).text();
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
 		TextView textView = linearLayoutCompat.findViewById(R.id.resultText);
 		textView.setText(result);
+	        result = "";
               }
 	      // 抽出結果を表示する
 	      ProgressBar progressBar = findViewById(R.id.progressbar);
