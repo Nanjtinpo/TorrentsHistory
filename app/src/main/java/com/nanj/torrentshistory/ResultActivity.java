@@ -5,13 +5,18 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.github.javiersantos.appupdater.AppUpdater;
@@ -27,7 +32,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -36,11 +40,13 @@ import java.util.regex.Matcher;
 public class ResultActivity extends AppCompatActivity {
   // フィールド変数
   String searchIP = "";
+  String resultALL = "";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_result);
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
     // Intentで送られたデータを受け取りIPを抽出する
     Intent intent = getIntent();
@@ -84,13 +90,29 @@ public class ResultActivity extends AppCompatActivity {
 	      finish();
             } else {
 	      String result = "";
-	      for (Element element : elements) {
-		result = result + element.text() + "\n";
+	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
+	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
+	      for (int i = 0; i < elements.size(); i += 5) {
+		result = "開始時間(UTC): <b>" + elements.get(i).text() + "</b><br>";
+		result = result + "終了時間(UTC): <b>" + elements.get(i + 1).text() + "</b><br>";
+		result = result + "カテゴリ: <b>" + elements.get(i + 2).text() + "</b><br>";
+		result = result + "タイトル: <b>" + elements.get(i + 3).text() + "</b><br>";
+		result = result + "サイズ: <b>" + elements.get(i + 4).text() + "</b>";
+	        if (i == 0) {
+		  resultALL = result;
+		} else {
+		  resultALL = resultALL + "\n\n" + result;
+		}
+		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
+		scrollContents.addView(linearLayoutCompat);
+		TextView textView = linearLayoutCompat.findViewById(R.id.resultText);
+		textView.setText(Html.fromHtml(result));
+	        result = "";
               }
 	      // 抽出結果を表示する
 	      ProgressBar progressBar = findViewById(R.id.progressbar);
 	      progressBar.setVisibility(View.GONE);
-	      toastMake(result);
+	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
           }
         });
@@ -112,7 +134,10 @@ public class ResultActivity extends AppCompatActivity {
     copyALL.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        copyToClipboard("all");
+        String bTagToText = resultALL.replaceAll("</?b>", "");
+        String htmlToText = bTagToText.replace("<br>", "\n");
+        String allText = htmlToText + "\n\nTorrent downloads and distributions for IP " + searchIP + "\n" + searchURL;
+        copyToClipboard(allText);
         toastMake("全てコピーしました");
       }
     });
