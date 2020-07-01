@@ -93,14 +93,14 @@ public class ResultActivity extends AppCompatActivity {
 	      for (int i = 0; i < forNum; i++) {
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
-	        TextView i = linearLayoutCompat.findViewById(R.id.resultText);
-	        i.setText(elements[i]);
+	        String textView = i.toString();
+	        TextView textView = linearLayoutCompat.findViewById(R.id.resultText);
+	        textView.setText(elements[i]);
               }
 	      // 抽出結果を表示する
 	      ProgressBar progressBar = findViewById(R.id.progressbar);
 	      progressBar.setVisibility(View.GONE);
 	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-	      toastMake(result);
             }
           }
         });
