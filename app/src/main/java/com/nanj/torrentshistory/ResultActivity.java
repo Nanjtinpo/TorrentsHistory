@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
@@ -31,6 +30,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -90,18 +90,16 @@ public class ResultActivity extends AppCompatActivity {
 	      String result = "";
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
-	      int forNum = elements.length();
-	      for (int i = 0; i < forNum; i++) {
+	      for (Element element : elements) {
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
-	        String textView = i;
-	        TextView textView = linearLayoutCompat.findViewById(R.id.resultText);
-	        textView.setText(elements[i]);
+	        result = result + element.text() + "\n";
               }
 	      // 抽出結果を表示する
 	      ProgressBar progressBar = findViewById(R.id.progressbar);
 	      progressBar.setVisibility(View.GONE);
 	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+	      toastMake(result);
             }
           }
         });
