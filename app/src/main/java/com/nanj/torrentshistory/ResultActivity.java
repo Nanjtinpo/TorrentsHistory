@@ -39,6 +39,7 @@ import java.util.regex.Matcher;
 public class ResultActivity extends AppCompatActivity {
   // フィールド変数
   String searchIP = "";
+  String resultALL = "";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,6 @@ public class ResultActivity extends AppCompatActivity {
 	      finish();
             } else {
 	      String result = "";
-	      String resultALL = "";
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
 	      for (int i = 0; i < elements.size(); i += 5) {
