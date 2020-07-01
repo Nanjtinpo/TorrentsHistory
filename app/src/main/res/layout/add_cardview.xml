@@ -13,18 +13,23 @@
     <androidx.appcompat.widget.LinearLayoutCompat
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:weightSum="2.2"
       android:orientation="horizontal">
       <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
         android:text="コピー"
         style="?attr/materialButtonOutlinedStyle"/>
+      <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"/>
       <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_weight="1"
         android:layout_marginEnd="15dp"
         android:text="詳細"
         style="?attr/materialButtonOutlinedStyle"/>
