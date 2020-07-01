@@ -91,12 +91,12 @@ public class MainActivity extends AppCompatActivity {
 	      ObjectMapper objectMapper = new ObjectMapper();
 	      JsonNode jsonNode = objectMapper.readTree(responseJSON);
 	      final String searchIP = jsonNode.get("Answer").get(0).get("data").asText();
-	      // debug
-	      Toast.makeText(MainActivity.this, searchIP, Toast.LENGTH_LONG).show();
-	      //
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+	          // debug
+	          Toast.makeText(MainActivity.this, searchIP, Toast.LENGTH_LONG).show();
+	          //
 		  Intent intent = new Intent(getApplication(), ResultActivity.class);
                   intent.putExtra("searchIP", searchIP);
                   startActivity(intent);
