@@ -31,7 +31,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -89,15 +88,13 @@ public class ResultActivity extends AppCompatActivity {
 	      finish();
             } else {
 	      String result = "";
-	      int forNum = 0;
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
-	      for (Element element : elements) {
-		forNum++;
+	      for (int i = 0; i < elements.size(); i++) {
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
 		TextView textView = linearLayoutCompat.findViewById(R.id.resultText);
-		textView.setText(element.text());
+		textView.setText(elements.get(i).text());
               }
 	      // 抽出結果を表示する
 	      ProgressBar progressBar = findViewById(R.id.progressbar);
