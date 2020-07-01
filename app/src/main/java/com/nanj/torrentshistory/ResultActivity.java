@@ -34,6 +34,9 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class ResultActivity extends AppCompatActivity {
+  // フィールド変数
+  String searchIP = "";
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -41,15 +44,13 @@ public class ResultActivity extends AppCompatActivity {
 
     // Intentで送られたデータを受け取りIPを抽出する
     Intent intent = getIntent();
-    String temp = "";
     if (Intent.ACTION_SEND.equals(intent.getAction())) {
-      temp = getIp(intent.getStringExtra(Intent.EXTRA_TEXT));
+      searchIP = getIP(intent.getStringExtra(Intent.EXTRA_TEXT));
     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-      temp = getIp(intent.getData().toString());
+      searchIP = getIP(intent.getData().toString());
     } else {
-      temp = intent.getStringExtra("searchIP");
+      searchIP = intent.getStringExtra("searchIP");
     }
-    final String searchIP = temp;
     // IPが見つからなかったら終了する
     if (searchIP.isEmpty()) {
       toastMake("IPアドレスが見つかりませんでした");
@@ -70,25 +71,26 @@ public class ResultActivity extends AppCompatActivity {
         if(!response.isSuccessful()){
           throw new IOException("Error : " + response);
         }
-        final String html = response.body().string();
+        final String responseHTML = response.body().string();
         runOnUiThread(new Runnable() {
           @Override
           public void run() {
 	    // 取得したHTMLから要素を抽出する
-            Document document = Jsoup.parse(html);
+            Document document = Jsoup.parse(responseHTML);
             Elements elements = document.select("tbody > tr > td");
 	    // 抽出できなければ終了する
             if (elements.text().isEmpty()) {
               toastMake(searchIP + " はTorrentを使用していません");
 	      finish();
             } else {
-	      String temp2 = "";
+	      String result = "";
 	      for (Element element : elements) {
-		// 要改善
-		temp2 = temp2 + element.text() + "\n";
-	        ProgressBar progressBar = findViewById(R.id.progressbar);
-	        progressBar.setVisibility(View.GONE);
+		result = result + element.text() + "\n";
               }
+	      // 抽出結果を表示する
+	      ProgressBar progressBar = findViewById(R.id.progressbar);
+	      progressBar.setVisibility(View.GONE);
+	      toastMake(result);
             }
           }
         });
@@ -110,7 +112,6 @@ public class ResultActivity extends AppCompatActivity {
     copyALL.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-	// 要改善
         copyToClipboard("all");
         toastMake("全てコピーしました");
       }
@@ -170,16 +171,15 @@ public class ResultActivity extends AppCompatActivity {
 
   // クリップボードにコピーする
   public void copyToClipboard(String copyText) {
-    ClipboardManager clipboardManager =
-                (ClipboardManager) ResultActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
-      if (null == clipboardManager) {
-        return;
-      }
+    ClipboardManager clipboardManager = (ClipboardManager)ResultActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
+    if (clipboardManager == null) {
+      return;
+    }
     clipboardManager.setPrimaryClip(ClipData.newPlainText("", copyText));
   }
 
   // 文字からIPを抽出する
-  public String getIp(String searchText) {
+  public String getIP(String searchText) {
     String ipRegExp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
     Pattern pattern = Pattern.compile(ipRegExp);
     Matcher matcher = pattern.matcher(searchText);
