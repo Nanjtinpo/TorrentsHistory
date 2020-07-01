@@ -91,7 +91,7 @@ public class ResultActivity extends AppCompatActivity {
 	      for (Element element : elements) {
 		LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
-		scrollContents.addView(linearLayoutCompat);
+	        // scrollContents.addView(linearLayoutCompat);
 		result = result + element.text() + "\n";
               }
 	      // 抽出結果を表示する
