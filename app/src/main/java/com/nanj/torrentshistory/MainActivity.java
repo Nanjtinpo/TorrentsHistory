@@ -26,6 +26,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
+//debug
+import android.widget.Toast;
+//
 
 public class MainActivity extends AppCompatActivity {
   // フィールド変数
@@ -88,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
 	      ObjectMapper objectMapper = new ObjectMapper();
 	      JsonNode jsonNode = objectMapper.readTree(responseJSON);
 	      final String searchIP = jsonNode.get("Answer").get(0).get("data").asText();
+	      // debug
+	      Toast.makeText(MainActivity.this, searchIP, Toast.LENGTH_LONG).show();
+	      //
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
