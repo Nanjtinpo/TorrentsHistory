@@ -89,7 +89,8 @@ public class ResultActivity extends AppCompatActivity {
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      scrollContents.removeAllViews();
 	      for (Element element : elements) {
-		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)inflater.inflate(R.layout.add_cardview, null);
+		LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
+		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
 		result = result + element.text() + "\n";
               }
