@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.github.javiersantos.appupdater.AppUpdater;
@@ -84,7 +85,11 @@ public class ResultActivity extends AppCompatActivity {
 	      finish();
             } else {
 	      String result = "";
+	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)this.findViewById(R.id.scrollcontents);
+	      scrollContents.removeAllViews();
 	      for (Element element : elements) {
+		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)inflater.inflate(R.layout.add_cardview, null);
+		scrollContents.addView(linearLayoutCompat);
 		result = result + element.text() + "\n";
               }
 	      // 抽出結果を表示する
