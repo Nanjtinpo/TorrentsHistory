@@ -88,6 +88,7 @@ public class ResultActivity extends AppCompatActivity {
 	      finish();
             } else {
 	      String result = "";
+	      String resultALL = "";
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
 	      for (int i = 0; i < elements.size(); i += 5) {
@@ -96,6 +97,11 @@ public class ResultActivity extends AppCompatActivity {
 		result = result + "カテゴリ: " + elements.get(i + 2).text() + "\n";
 		result = result + "タイトル: " + elements.get(i + 3).text() + "\n";
 		result = result + "サイズ: " + elements.get(i + 4).text();
+	        if (i == 0) {
+		  resultALL = result;
+		} else {
+		  resultALL = resultALL + "\n\n" + result;
+		}
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
 		TextView textView = linearLayoutCompat.findViewById(R.id.resultText);
@@ -127,7 +133,8 @@ public class ResultActivity extends AppCompatActivity {
     copyALL.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        copyToClipboard("all");
+        String allText = resultALL + "\nTorrent downloads and distributions for IP " + searchIP + "\n" + searchURL;
+        copyToClipboard(allText);
         toastMake("全てコピーしました");
       }
     });
