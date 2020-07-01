@@ -26,9 +26,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
-//debug
-import android.widget.Toast;
-//
 
 public class MainActivity extends AppCompatActivity {
   // フィールド変数
@@ -94,9 +91,6 @@ public class MainActivity extends AppCompatActivity {
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-	          // debug
-	          Toast.makeText(MainActivity.this, searchIP, Toast.LENGTH_LONG).show();
-	          //
 		  Intent intent = new Intent(getApplication(), ResultActivity.class);
                   intent.putExtra("searchIP", searchIP);
                   startActivity(intent);
