@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     Button searchStart = findViewById(R.id.searchstart);
     // 「検索」ボタンをおすとTextInputLayoutに入れたIPと一緒にResultActivityに飛ぶ
     searchStart.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View view) {
+      public void onClick(View v) {
         TextInputLayout textInputLayout = findViewById(R.id.textinputlayout);
         if (ipSearch) {
           String searchIP = textInputLayout.getEditText().getText().toString();
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     Button searchStartMyIP = findViewById(R.id.searchstartmyip);
     // 「自分のIPを検索」ボタンをおすとAPIから取得したパブリックIPと一緒にResultActivityに飛ぶ
     searchStartMyIP.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View view) {
+      public void onClick(View v) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
             .url("https://api.ipify.org")
