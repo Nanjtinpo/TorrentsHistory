@@ -87,7 +87,6 @@ public class ResultActivity extends AppCompatActivity {
             } else {
 	      String result = "";
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
-	      scrollContents.removeAllViews();
 	      for (Element element : elements) {
 		LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
