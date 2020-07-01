@@ -43,6 +43,7 @@ public class ResultActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_result);
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
     // Intentで送られたデータを受け取りIPを抽出する
     Intent intent = getIntent();
@@ -95,6 +96,7 @@ public class ResultActivity extends AppCompatActivity {
               }
 	      // 抽出結果を表示する
 	      ProgressBar progressBar = findViewById(R.id.progressbar);
+	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 	      progressBar.setVisibility(View.GONE);
 	      toastMake(result);
             }
