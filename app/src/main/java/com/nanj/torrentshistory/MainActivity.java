@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
@@ -85,9 +86,8 @@ public class MainActivity extends AppCompatActivity {
               }
 	      String responseJSON = response.body().string();
 	      ObjectMapper objectMapper = new ObjectMapper();
-              ResponseDTO responseDTO = objectMapper.readValue(responseJSON, ResponseDTO.class);
-	      final String searchIP = responseDTO.data;
-	      // 要改善
+	      JsonNode jsonNode = objectMapper.readTree(responseJSON);
+	      final String searchIP = jsonNode.get("Answer").get("data").asText();
               runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
