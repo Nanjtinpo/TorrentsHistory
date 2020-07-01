@@ -34,6 +34,9 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class ResultActivity extends AppCompatActivity {
+  // フィールド変数
+  String searchIP = "";
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -41,15 +44,13 @@ public class ResultActivity extends AppCompatActivity {
 
     // Intentで送られたデータを受け取りIPを抽出する
     Intent intent = getIntent();
-    String temp = "";
     if (Intent.ACTION_SEND.equals(intent.getAction())) {
-      temp = getIp(intent.getStringExtra(Intent.EXTRA_TEXT));
+      searchIP = getIP(intent.getStringExtra(Intent.EXTRA_TEXT));
     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-      temp = getIp(intent.getData().toString());
+      searchIP = getIP(intent.getData().toString());
     } else {
-      temp = intent.getStringExtra("searchIP");
+      searchIP = intent.getStringExtra("searchIP");
     }
-    final String searchIP = temp;
     // IPが見つからなかったら終了する
     if (searchIP.isEmpty()) {
       toastMake("IPアドレスが見つかりませんでした");
@@ -179,7 +180,7 @@ public class ResultActivity extends AppCompatActivity {
   }
 
   // 文字からIPを抽出する
-  public String getIp(String searchText) {
+  public String getIP(String searchText) {
     String ipRegExp = "((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])";
     Pattern pattern = Pattern.compile(ipRegExp);
     Matcher matcher = pattern.matcher(searchText);
