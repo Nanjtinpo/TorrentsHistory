@@ -134,7 +134,9 @@ public class ResultActivity extends AppCompatActivity {
     copyALL.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        String allText = resultALL + "\n\nTorrent downloads and distributions for IP " + searchIP + "\n" + searchURL;
+        String bTagToText = resultALL.replaceAll("</?b>", "");
+        String htmlToText = bTagToText.replace("<br>", "\n");
+        String allText = htmlToText + "\n\nTorrent downloads and distributions for IP " + searchIP + "\n" + searchURL;
         copyToClipboard(allText);
         toastMake("全てコピーしました");
       }
