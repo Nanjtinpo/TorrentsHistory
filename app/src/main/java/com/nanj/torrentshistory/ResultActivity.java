@@ -96,9 +96,9 @@ public class ResultActivity extends AppCompatActivity {
 		result = result + element.text() + "\n";
               }
 	      // 抽出結果を表示する
-	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 	      ProgressBar progressBar = findViewById(R.id.progressbar);
 	      progressBar.setVisibility(View.GONE);
+	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 	      toastMake(result);
             }
           }
