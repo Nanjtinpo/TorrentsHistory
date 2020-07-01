@@ -94,7 +94,7 @@ public class ResultActivity extends AppCompatActivity {
 	      for (int i = 0; i < forNum; i++) {
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
-	        String textView = i.toString();
+	        String textView = i;
 	        TextView textView = linearLayoutCompat.findViewById(R.id.resultText);
 	        textView.setText(elements[i]);
               }
