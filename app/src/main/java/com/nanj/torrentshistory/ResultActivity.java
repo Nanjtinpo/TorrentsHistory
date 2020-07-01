@@ -88,12 +88,12 @@ public class ResultActivity extends AppCompatActivity {
             } else {
 	      String result = "";
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
-	      View inf = LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
+	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
 	      String forNum = elements.length;
 	      for (int i = 0; i < forNum; i++) {
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
-	        TextView i = inf.findViewById(R.id.resultText);
+	        TextView i = linearLayoutCompat.findViewById(R.id.resultText);
 	        i.setText(elements[i]);
               }
 	      // 抽出結果を表示する
