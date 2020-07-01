@@ -6,10 +6,7 @@
   <com.google.android.material.card.MaterialCardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="7.5dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:checkable="true">
+    android:layout_margin="7.5dp">
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"/>
@@ -20,13 +17,15 @@
       <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="コピー"
-        style="?attr/borderlessButtonStyle"/>
+        style="?attr/materialButtonOutlinedStyle"/>
       <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="詳細"
-        style="?attr/borderlessButtonStyle"/>
+        style="?attr/materialButtonOutlinedStyle"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
   </com.google.android.material.card.MaterialCardView>
 </androidx.appcompat.widget.LinearLayoutCompat>
