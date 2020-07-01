@@ -92,11 +92,11 @@ public class ResultActivity extends AppCompatActivity {
 	      LinearLayoutCompat scrollContents = (LinearLayoutCompat)findViewById(R.id.scrollcontents);
 	      LayoutInflater layoutInflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
 	      for (int i = 0; i < elements.size(); i += 5) {
-		result = "開始時間(UTC): " + elements.get(i).text() + "\n";
-		result = result + "終了時間(UTC): " + elements.get(i + 1).text() + "\n";
-		result = result + "カテゴリ: " + elements.get(i + 2).text() + "\n";
-		result = result + "タイトル: " + elements.get(i + 3).text() + "\n";
-		result = result + "サイズ: " + elements.get(i + 4).text();
+		result = "開始時間(UTC): <b>" + elements.get(i).text() + "</b><br>";
+		result = result + "終了時間(UTC): <b>" + elements.get(i + 1).text() + "</b><br>";
+		result = result + "カテゴリ: <b>" + elements.get(i + 2).text() + "</b><br>";
+		result = result + "タイトル: <b>" + elements.get(i + 3).text() + "</b><br>";
+		result = result + "サイズ: <b>" + elements.get(i + 4).text() + "</b>";
 	        if (i == 0) {
 		  resultALL = result;
 		} else {
@@ -105,7 +105,7 @@ public class ResultActivity extends AppCompatActivity {
 		LinearLayoutCompat linearLayoutCompat = (LinearLayoutCompat)layoutInflater.inflate(R.layout.add_cardview, null);
 		scrollContents.addView(linearLayoutCompat);
 		TextView textView = linearLayoutCompat.findViewById(R.id.resultText);
-		textView.setText(result);
+		textView.setText(Html.fromHtml(result));
 	        result = "";
               }
 	      // 抽出結果を表示する
@@ -133,7 +133,7 @@ public class ResultActivity extends AppCompatActivity {
     copyALL.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        String allText = resultALL + "\nTorrent downloads and distributions for IP " + searchIP + "\n" + searchURL;
+        String allText = resultALL + "\n\nTorrent downloads and distributions for IP " + searchIP + "\n" + searchURL;
         copyToClipboard(allText);
         toastMake("全てコピーしました");
       }
